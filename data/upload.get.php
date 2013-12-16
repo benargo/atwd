@@ -24,9 +24,7 @@
 	<!-- JavaScript -->
 	<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 	<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-	<script type="text/javascript"><!--
-
-	--></script>
+	<script src="../media/js/data-upload.js"></script>
 
 </head>
 <body>
@@ -38,16 +36,23 @@
 			<hr />
 		</div>
 		<div class="sixteen columns row">
-			<form id="upload" action="./upload" method="POST">
+			<form id="upload" action="./upload" enctype="multipart/form-data" method="POST">
+				<input type="hidden" name="MAX_FILE_SIZE" value="32000" />
 				<p>Upload a CSV file which will become the recorded crime data for England and Wales</p>
 				<p class="upload"><input type="file" name="csv"></p>
 			</form>
 		</div>
 
 		<!-- Footer -->
-		<div class="one-third column row">
-			<a href="http://www.uwe.ac.uk/" target="_blank" rel="nofollow"><img src="../media/images/uwe.200px.png" alt="UWE Logo"></a>
-			<a href="https://www.gov.uk/government/organisations/home-office" target="_blank" rel="nofollow"><img src="../media/images/home_office.200px.png" alt="Home Office Logo"></a>
+		<hr>
+		<div class="sixteen columns clearfix">
+			<p>Copyright &copy; 2013-14 University of the West of England, Bristol. Assignment by 10008548.</p>
+		</div>
+		<div class="one-third column clearfix">
+			<a href="http://www.uwe.ac.uk/" target="_blank" rel="nofollow"><img src="../media/images/uwe.75px.png" alt="UWE Logo"></a>
+		</div>
+		<div class="one-third column">
+			<a href="https://www.gov.uk/government/organisations/home-office" target="_blank" rel="nofollow"><img src="../media/images/home_office.75px.png" alt="Home Office Logo"></a>
 		</div>
 	</div><!-- container -->
 </body>

@@ -1,0 +1,24 @@
+Options -Indexes
+
+# Error Logs
+php_flag log_errors on
+php_value error_log logs/error.log
+
+# Compression
+AddOutputFilterByType DEFLATE text/html text/plain text/xml application/xml application/xhtml+xml text/javascript text/css application/x-javascript
+BrowserMatch ^Mozilla/4 gzip-only-text/html
+BrowserMatch ^Mozilla/4.0[678] no-gzip
+BrowserMatch bMSIE !no-gzip !gzip-only-text/html
+
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	RewriteBase /~b2-argo/atwd/
+
+	RewriteRule ^data(\/)?$ data/upload [R]
+
+	RewriteCond %{REQUEST_METHOD} GET
+	RewriteRule ^data/upload$ data/upload.get.php [L]
+
+	RewriteCond %{REQUEST_METHOD} POST
+	RewriteRule ^data/upload$ data/upload-post.php [L]
+</IfModule>

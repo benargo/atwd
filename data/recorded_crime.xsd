@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="crimes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" name="region">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="name" type="xs:string"/>
+              <xs:element maxOccurs="unbounded" name="area">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="name" type="xs:string"/>
+                    <xs:element name="total_recorded_crime">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="including_fraud" type="xs:integer"/>
+                          <xs:element name="excluding_fraud" type="xs:integer"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="victim_based">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="violence_against_the_person">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="homicide" type="xs:integer"/>
+                                <xs:element name="violence_with_injury" type="xs:integer"/>
+                                <xs:element name="violence_without_injury" type="xs:integer"/>
+                              </xs:sequence>
+                              <xs:attribute name="total" use="required" type="xs:integer"/>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="sexual_offences" type="xs:integer"/>
+                          <xs:element name="robbery" type="xs:integer"/>
+                          <xs:element name="theft_offences">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="burglary">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="domestic" type="xs:integer"/>
+                                      <xs:element name="non_domestic" type="xs:integer"/>
+                                    </xs:sequence>
+                                    <xs:attribute name="total" use="required" type="xs:integer"/>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="vehicle_offences" type="xs:integer"/>
+                                <xs:element name="theft_from_the_person" type="xs:integer"/>
+                                <xs:element name="bicycle_theft" type="xs:integer"/>
+                                <xs:element name="shoplifting" type="xs:integer"/>
+                                <xs:element name="other" type="xs:integer"/>
+                              </xs:sequence>
+                              <xs:attribute name="total" use="required" type="xs:integer"/>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="criminal_damage_and_arson" type="xs:integer"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="other_crimes_against_society">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="drug_offences" type="xs:integer"/>
+                          <xs:element name="posession_of_weapons_offences" type="xs:integer"/>
+                          <xs:element name="public_order_offences" type="xs:integer"/>
+                          <xs:element name="miscellaneous" type="xs:integer"/>
+                          <xs:element name="fraud" type="xs:integer"/>
+                        </xs:sequence>
+                        <xs:attribute name="total" use="required" type="xs:integer"/>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="id" use="required"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="id" use="required" type="xs:NCName"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="timestamp" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+
+  
+  
+  
+  
+  
+  <xs:element name="name" type="xs:string"/>
+</xs:schema>

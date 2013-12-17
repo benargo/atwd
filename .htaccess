@@ -16,6 +16,9 @@ BrowserMatch bMSIE !no-gzip !gzip-only-text/html
 
 	RewriteRule ^data(\/)?$ data/upload [R]
 
+	# PHP Source Files
+	RewriteRule ^(.*)\.phps$ ../resources/source.php?file=atwd/$1 [L]
+
 	RewriteCond %{REQUEST_METHOD} GET
 	RewriteRule ^data/upload$ data/upload.get.php [L]
 

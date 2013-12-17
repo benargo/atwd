@@ -225,14 +225,18 @@
 		if($dom->schemaValidate(__DIR__.'/recorded_crime.xsd'))
 		{
 			file_put_contents(__DIR__.'/recorded_crime.xml', $dom->saveXML());
-			move_uploaded_file($_FILES['csv']['tmp_name'], __DIR__.'/recorded_crime.csv');
 		}
 		else
 		{
-			header('Content-type: Text/XML');
+			header('Content-type: text/xml');
 			print_r($dom->saveXML());
 			exit;
 		}
+	}
+	else
+	{
+		http_response_code(400);
+		exit;
 	}
 ?>
 <!DOCTYPE html>

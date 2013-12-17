@@ -36,13 +36,13 @@
 			<hr />
 		</div>
 		<div class="sixteen columns row">
-			<p>1. Download the <a href="./recorded_crime.csv">CSV File</a> to upload.</p>
-			<form id="upload" action="./upload" enctype="multipart/form-data" method="POST">
+			<p>1. Download the <a href="recorded_crime.csv">CSV File</a> to upload.</p>
+			<form id="upload" action="upload" enctype="multipart/form-data" method="POST">
 				<input type="hidden" name="MAX_FILE_SIZE" value="32000" />
 				<p>2. Upload a CSV file which will become the recorded crime data for England and Wales</p>
 				<p class="upload"><input type="file" name="csv"></p>
 			</form>
-			<?php echo (file_exists('./recorded_crime.xml') ? '<p>Or <a href="./recorded_crime.xml">view the existing data</a></p>' : ''); ?>
+			<p>View the <a href="recorded_crime.xsd">XSD schema</a><?php echo (file_exists('./recorded_crime.xml') ? ' or <a href="recorded_crime.xml">the existing data</a>' : ''); ?>.</p>
 		</div>
 
 		<!-- Footer -->

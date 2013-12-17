@@ -83,11 +83,4 @@
       <xs:attribute name="timestamp" use="required" type="xs:integer"/>
     </xs:complexType>
   </xs:element>
-
-  
-  
-  
-  
-  
-  <xs:element name="name" type="xs:string"/>
 </xs:schema>

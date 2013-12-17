@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<crimes timestamp="1387246229">
+<crimes xmlns="http://www.cems.uwe.ac.uk/assignments/10008548/atwd/" timestamp="1387274814">
   <region id="north_east">
     <name>North East</name>
     <area id="cleveland">
@@ -34,7 +34,7 @@
         <posession_of_weapons_offences>267</posession_of_weapons_offences>
         <public_order_offences>1342</public_order_offences>
         <miscellaneous>405</miscellaneous>
-        <fraud/>
+        <fraud>455</fraud>
       </other_crimes_against_society>
     </area>
     <area id="durham">
@@ -69,7 +69,7 @@
         <posession_of_weapons_offences>218</posession_of_weapons_offences>
         <public_order_offences>1178</public_order_offences>
         <miscellaneous>476</miscellaneous>
-        <fraud/>
+        <fraud>305</fraud>
       </other_crimes_against_society>
     </area>
     <area id="northumbria">
@@ -104,7 +104,7 @@
         <posession_of_weapons_offences>633</posession_of_weapons_offences>
         <public_order_offences>2844</public_order_offences>
         <miscellaneous>1104</miscellaneous>
-        <fraud/>
+        <fraud>911</fraud>
       </other_crimes_against_society>
     </area>
   </region>
@@ -142,7 +142,7 @@
         <posession_of_weapons_offences>260</posession_of_weapons_offences>
         <public_order_offences>2123</public_order_offences>
         <miscellaneous>578</miscellaneous>
-        <fraud/>
+        <fraud>1223</fraud>
       </other_crimes_against_society>
     </area>
     <area id="cumbria">
@@ -177,7 +177,7 @@
         <posession_of_weapons_offences>143</posession_of_weapons_offences>
         <public_order_offences>1008</public_order_offences>
         <miscellaneous>331</miscellaneous>
-        <fraud/>
+        <fraud>316</fraud>
       </other_crimes_against_society>
     </area>
     <area id="greater_manchester">
@@ -212,7 +212,7 @@
         <posession_of_weapons_offences>1063</posession_of_weapons_offences>
         <public_order_offences>6431</public_order_offences>
         <miscellaneous>1906</miscellaneous>
-        <fraud/>
+        <fraud>2581</fraud>
       </other_crimes_against_society>
     </area>
     <area id="lancashire">
@@ -247,7 +247,7 @@
         <posession_of_weapons_offences>514</posession_of_weapons_offences>
         <public_order_offences>2618</public_order_offences>
         <miscellaneous>951</miscellaneous>
-        <fraud/>
+        <fraud>1823</fraud>
       </other_crimes_against_society>
     </area>
     <area id="merseyside">
@@ -282,7 +282,7 @@
         <posession_of_weapons_offences>663</posession_of_weapons_offences>
         <public_order_offences>3149</public_order_offences>
         <miscellaneous>956</miscellaneous>
-        <fraud/>
+        <fraud>1629</fraud>
       </other_crimes_against_society>
     </area>
   </region>
@@ -320,7 +320,7 @@
         <posession_of_weapons_offences>277</posession_of_weapons_offences>
         <public_order_offences>2723</public_order_offences>
         <miscellaneous>838</miscellaneous>
-        <fraud/>
+        <fraud>1215</fraud>
       </other_crimes_against_society>
     </area>
     <area id="north_yorkshire">
@@ -355,7 +355,7 @@
         <posession_of_weapons_offences>178</posession_of_weapons_offences>
         <public_order_offences>1121</public_order_offences>
         <miscellaneous>470</miscellaneous>
-        <fraud/>
+        <fraud>900</fraud>
       </other_crimes_against_society>
     </area>
     <area id="south_yorkshire">
@@ -390,7 +390,7 @@
         <posession_of_weapons_offences>505</posession_of_weapons_offences>
         <public_order_offences>2029</public_order_offences>
         <miscellaneous>894</miscellaneous>
-        <fraud/>
+        <fraud>1679</fraud>
       </other_crimes_against_society>
     </area>
     <area id="west_yorkshire">
@@ -425,7 +425,7 @@
         <posession_of_weapons_offences>689</posession_of_weapons_offences>
         <public_order_offences>4673</public_order_offences>
         <miscellaneous>2206</miscellaneous>
-        <fraud/>
+        <fraud>3867</fraud>
       </other_crimes_against_society>
     </area>
   </region>
@@ -463,7 +463,7 @@
         <posession_of_weapons_offences>277</posession_of_weapons_offences>
         <public_order_offences>1183</public_order_offences>
         <miscellaneous>617</miscellaneous>
-        <fraud/>
+        <fraud>779</fraud>
       </other_crimes_against_society>
     </area>
     <area id="leicestershire">
@@ -498,7 +498,7 @@
         <posession_of_weapons_offences>297</posession_of_weapons_offences>
         <public_order_offences>2342</public_order_offences>
         <miscellaneous>746</miscellaneous>
-        <fraud/>
+        <fraud>1120</fraud>
       </other_crimes_against_society>
     </area>
     <area id="lincolnshire">
@@ -533,7 +533,7 @@
         <posession_of_weapons_offences>250</posession_of_weapons_offences>
         <public_order_offences>1357</public_order_offences>
         <miscellaneous>554</miscellaneous>
-        <fraud/>
+        <fraud>496</fraud>
       </other_crimes_against_society>
     </area>
     <area id="northamptonshire">
@@ -568,7 +568,7 @@
         <posession_of_weapons_offences>247</posession_of_weapons_offences>
         <public_order_offences>953</public_order_offences>
         <miscellaneous>504</miscellaneous>
-        <fraud/>
+        <fraud>943</fraud>
       </other_crimes_against_society>
     </area>
     <area id="nottinghamshire">
@@ -603,7 +603,7 @@
         <posession_of_weapons_offences>472</posession_of_weapons_offences>
         <public_order_offences>1793</public_order_offences>
         <miscellaneous>781</miscellaneous>
-        <fraud/>
+        <fraud>827</fraud>
       </other_crimes_against_society>
     </area>
   </region>
@@ -641,7 +641,7 @@
         <posession_of_weapons_offences>320</posession_of_weapons_offences>
         <public_order_offences>1825</public_order_offences>
         <miscellaneous>877</miscellaneous>
-        <fraud/>
+        <fraud>1404</fraud>
       </other_crimes_against_society>
     </area>
     <area id="warwickshire">
@@ -676,7 +676,7 @@
         <posession_of_weapons_offences>126</posession_of_weapons_offences>
         <public_order_offences>724</public_order_offences>
         <miscellaneous>317</miscellaneous>
-        <fraud/>
+        <fraud>472</fraud>
       </other_crimes_against_society>
     </area>
     <area id="west_mercia">
@@ -711,7 +711,7 @@
         <posession_of_weapons_offences>335</posession_of_weapons_offences>
         <public_order_offences>2040</public_order_offences>
         <miscellaneous>870</miscellaneous>
-        <fraud/>
+        <fraud>970</fraud>
       </other_crimes_against_society>
     </area>
     <area id="west_midlands">
@@ -746,7 +746,7 @@
         <posession_of_weapons_offences>1222</posession_of_weapons_offences>
         <public_order_offences>5642</public_order_offences>
         <miscellaneous>2210</miscellaneous>
-        <fraud/>
+        <fraud>4441</fraud>
       </other_crimes_against_society>
     </area>
   </region>
@@ -784,7 +784,7 @@
         <posession_of_weapons_offences>264</posession_of_weapons_offences>
         <public_order_offences>1128</public_order_offences>
         <miscellaneous>491</miscellaneous>
-        <fraud/>
+        <fraud>516</fraud>
       </other_crimes_against_society>
     </area>
     <area id="cambridgeshire">
@@ -819,7 +819,7 @@
         <posession_of_weapons_offences>217</posession_of_weapons_offences>
         <public_order_offences>1281</public_order_offences>
         <miscellaneous>506</miscellaneous>
-        <fraud/>
+        <fraud>1096</fraud>
       </other_crimes_against_society>
     </area>
     <area id="essex">
@@ -854,7 +854,7 @@
         <posession_of_weapons_offences>832</posession_of_weapons_offences>
         <public_order_offences>3203</public_order_offences>
         <miscellaneous>1128</miscellaneous>
-        <fraud/>
+        <fraud>1825</fraud>
       </other_crimes_against_society>
     </area>
     <area id="hertfordshire">
@@ -889,7 +889,7 @@
         <posession_of_weapons_offences>293</posession_of_weapons_offences>
         <public_order_offences>2062</public_order_offences>
         <miscellaneous>788</miscellaneous>
-        <fraud/>
+        <fraud>1326</fraud>
       </other_crimes_against_society>
     </area>
     <area id="norfolk">
@@ -924,7 +924,7 @@
         <posession_of_weapons_offences>212</posession_of_weapons_offences>
         <public_order_offences>1483</public_order_offences>
         <miscellaneous>365</miscellaneous>
-        <fraud/>
+        <fraud>503</fraud>
       </other_crimes_against_society>
     </area>
     <area id="suffolk">
@@ -959,7 +959,7 @@
         <posession_of_weapons_offences>233</posession_of_weapons_offences>
         <public_order_offences>1945</public_order_offences>
         <miscellaneous>671</miscellaneous>
-        <fraud/>
+        <fraud>724</fraud>
       </other_crimes_against_society>
     </area>
   </region>
@@ -997,7 +997,7 @@
         <posession_of_weapons_offences>22</posession_of_weapons_offences>
         <public_order_offences>201</public_order_offences>
         <miscellaneous>181</miscellaneous>
-        <fraud/>
+        <fraud>30</fraud>
       </other_crimes_against_society>
     </area>
     <area id="metropolitan_police">
@@ -1032,7 +1032,7 @@
         <posession_of_weapons_offences>3751</posession_of_weapons_offences>
         <public_order_offences>26429</public_order_offences>
         <miscellaneous>7710</miscellaneous>
-        <fraud/>
+        <fraud>26756</fraud>
       </other_crimes_against_society>
     </area>
   </region>
@@ -1070,7 +1070,7 @@
         <posession_of_weapons_offences>524</posession_of_weapons_offences>
         <public_order_offences>4417</public_order_offences>
         <miscellaneous>1207</miscellaneous>
-        <fraud/>
+        <fraud>2123</fraud>
       </other_crimes_against_society>
     </area>
     <area id="kent">
@@ -1105,7 +1105,7 @@
         <posession_of_weapons_offences>428</posession_of_weapons_offences>
         <public_order_offences>2299</public_order_offences>
         <miscellaneous>1214</miscellaneous>
-        <fraud/>
+        <fraud>1495</fraud>
       </other_crimes_against_society>
     </area>
     <area id="surrey">
@@ -1140,7 +1140,7 @@
         <posession_of_weapons_offences>270</posession_of_weapons_offences>
         <public_order_offences>1773</public_order_offences>
         <miscellaneous>931</miscellaneous>
-        <fraud/>
+        <fraud>1555</fraud>
       </other_crimes_against_society>
     </area>
     <area id="sussex">
@@ -1175,7 +1175,7 @@
         <posession_of_weapons_offences>519</posession_of_weapons_offences>
         <public_order_offences>2628</public_order_offences>
         <miscellaneous>1198</miscellaneous>
-        <fraud/>
+        <fraud>1860</fraud>
       </other_crimes_against_society>
     </area>
     <area id="thames_valley">
@@ -1210,7 +1210,7 @@
         <posession_of_weapons_offences>731</posession_of_weapons_offences>
         <public_order_offences>5290</public_order_offences>
         <miscellaneous>1646</miscellaneous>
-        <fraud/>
+        <fraud>4235</fraud>
       </other_crimes_against_society>
     </area>
   </region>
@@ -1248,7 +1248,7 @@
         <posession_of_weapons_offences>499</posession_of_weapons_offences>
         <public_order_offences>4964</public_order_offences>
         <miscellaneous>1258</miscellaneous>
-        <fraud/>
+        <fraud>1521</fraud>
       </other_crimes_against_society>
     </area>
     <area id="devon_and_cornwall">
@@ -1283,7 +1283,7 @@
         <posession_of_weapons_offences>416</posession_of_weapons_offences>
         <public_order_offences>5390</public_order_offences>
         <miscellaneous>955</miscellaneous>
-        <fraud/>
+        <fraud>1322</fraud>
       </other_crimes_against_society>
     </area>
     <area id="dorset">
@@ -1318,7 +1318,7 @@
         <posession_of_weapons_offences>165</posession_of_weapons_offences>
         <public_order_offences>979</public_order_offences>
         <miscellaneous>350</miscellaneous>
-        <fraud/>
+        <fraud>439</fraud>
       </other_crimes_against_society>
     </area>
     <area id="gloucestershire">
@@ -1353,7 +1353,7 @@
         <posession_of_weapons_offences>134</posession_of_weapons_offences>
         <public_order_offences>713</public_order_offences>
         <miscellaneous>381</miscellaneous>
-        <fraud/>
+        <fraud>655</fraud>
       </other_crimes_against_society>
     </area>
     <area id="wiltshire">
@@ -1388,7 +1388,7 @@
         <posession_of_weapons_offences>136</posession_of_weapons_offences>
         <public_order_offences>892</public_order_offences>
         <miscellaneous>248</miscellaneous>
-        <fraud/>
+        <fraud>776</fraud>
       </other_crimes_against_society>
     </area>
   </region>
@@ -1426,7 +1426,7 @@
         <posession_of_weapons_offences>146</posession_of_weapons_offences>
         <public_order_offences>1219</public_order_offences>
         <miscellaneous>200</miscellaneous>
-        <fraud/>
+        <fraud>371</fraud>
       </other_crimes_against_society>
     </area>
     <area id="gwent">
@@ -1461,7 +1461,7 @@
         <posession_of_weapons_offences>176</posession_of_weapons_offences>
         <public_order_offences>1347</public_order_offences>
         <miscellaneous>418</miscellaneous>
-        <fraud/>
+        <fraud>267</fraud>
       </other_crimes_against_society>
     </area>
     <area id="north_wales">
@@ -1496,7 +1496,7 @@
         <posession_of_weapons_offences>170</posession_of_weapons_offences>
         <public_order_offences>1727</public_order_offences>
         <miscellaneous>439</miscellaneous>
-        <fraud/>
+        <fraud>352</fraud>
       </other_crimes_against_society>
     </area>
     <area id="south_wales">
@@ -1531,7 +1531,7 @@
         <posession_of_weapons_offences>463</posession_of_weapons_offences>
         <public_order_offences>3889</public_order_offences>
         <miscellaneous>944</miscellaneous>
-        <fraud/>
+        <fraud>1443</fraud>
       </other_crimes_against_society>
     </area>
   </region>
@@ -1569,7 +1569,7 @@
         <posession_of_weapons_offences>363</posession_of_weapons_offences>
         <public_order_offences>6521</public_order_offences>
         <miscellaneous>912</miscellaneous>
-        <fraud/>
+        <fraud>400</fraud>
       </other_crimes_against_society>
     </area>
   </region>
@@ -1579,35 +1579,35 @@
       <name>Action Fraud</name>
       <total_recorded_crime>
         <including_fraud>150389</including_fraud>
-        <excluding_fraud>..</excluding_fraud>
+        <excluding_fraud>0</excluding_fraud>
       </total_recorded_crime>
       <victim_based>
         <violence_against_the_person total="0">
-          <homicide>..</homicide>
-          <violence_with_injury>..</violence_with_injury>
-          <violence_without_injury>..</violence_without_injury>
+          <homicide>0</homicide>
+          <violence_with_injury>0</violence_with_injury>
+          <violence_without_injury>0</violence_without_injury>
         </violence_against_the_person>
-        <sexual_offences>..</sexual_offences>
-        <robbery>..</robbery>
+        <sexual_offences>0</sexual_offences>
+        <robbery>0</robbery>
         <theft_offences total="0">
           <burglary total="0">
-            <domestic>..</domestic>
-            <non_domestic>..</non_domestic>
+            <domestic>0</domestic>
+            <non_domestic>0</non_domestic>
           </burglary>
-          <vehicle_offences>..</vehicle_offences>
-          <theft_from_the_person>..</theft_from_the_person>
-          <bicycle_theft>..</bicycle_theft>
-          <shoplifting>..</shoplifting>
-          <other>..</other>
+          <vehicle_offences>0</vehicle_offences>
+          <theft_from_the_person>0</theft_from_the_person>
+          <bicycle_theft>0</bicycle_theft>
+          <shoplifting>0</shoplifting>
+          <other>0</other>
         </theft_offences>
-        <criminal_damage_and_arson>..</criminal_damage_and_arson>
+        <criminal_damage_and_arson>0</criminal_damage_and_arson>
       </victim_based>
       <other_crimes_against_society total="0">
-        <drug_offences>..</drug_offences>
-        <posession_of_weapons_offences>..</posession_of_weapons_offences>
-        <public_order_offences>..</public_order_offences>
-        <miscellaneous>..</miscellaneous>
-        <fraud/>
+        <drug_offences>0</drug_offences>
+        <posession_of_weapons_offences>0</posession_of_weapons_offences>
+        <public_order_offences>0</public_order_offences>
+        <miscellaneous>0</miscellaneous>
+        <fraud>150389</fraud>
       </other_crimes_against_society>
     </area>
   </region>

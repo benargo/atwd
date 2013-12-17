@@ -47,11 +47,11 @@
 
 					if(preg_match('/(Region|^WALES)$/', $row[0]))
 					{
-						$region = $dom->createElement('region');
+						$region = $dom->createElementNS('http://www.cems.uwe.ac.uk/assignments/10008548/atwd/', 'region');
 						$region->setAttribute('id', strtolower(str_replace(' ', '_', preg_replace('/( Region)/', '', $row[0]))));
 						$region = $crimes->appendChild($region);
 
-						$region_name = $dom->createElement('name', str_replace(' Region', '', $row[0]));
+						$region_name = $dom->createElementNS('http://www.cems.uwe.ac.uk/assignments/10008548/atwd/', 'name', str_replace(' Region', '', $row[0]));
 						$region_name = $region->appendChild($region_name);
 
 						foreach($areas as $area)
@@ -64,134 +64,134 @@
 					else
 					{
 						$area_id = strtolower(str_replace(' ', '_', str_replace('1', '', $row[0])));
-						$areas[$area_id] = $dom->createElement('area');
+						$areas[$area_id] = $dom->createElementNS('http://www.cems.uwe.ac.uk/assignments/10008548/atwd/', 'area');
 						$areas[$area_id]->setAttribute('id', $area_id);
 
 						// Area Name
-						$node = $dom->createElement('name', str_replace('1', '', $row[0]));
+						$node = $dom->createElementNS('http://www.cems.uwe.ac.uk/assignments/10008548/atwd/', 'name', str_replace('1', '', $row[0]));
 						$areas[$area_id]->appendChild($node);
 
 						// Total recorded crime
-						$node = $dom->createElement('total_recorded_crime');
+						$node = $dom->createElementNS('http://www.cems.uwe.ac.uk/assignments/10008548/atwd/', 'total_recorded_crime');
 						$total = $areas[$area_id]->appendChild($node);
 
 							// Total recorded crime, including fraud
-							$node = $dom->createElement('including_fraud', str_replace(',', '', $row[1]));
+							$node = $dom->createElementNS('http://www.cems.uwe.ac.uk/assignments/10008548/atwd/', 'including_fraud', str_replace(',', '', $row[1]));
 							$total->appendChild($node);
 
 							// Total recorded crime, excluding fraud
-							$node = $dom->createElement('excluding_fraud', str_replace(',', '', $row[2]));
+							$node = $dom->createElementNS('http://www.cems.uwe.ac.uk/assignments/10008548/atwd/', 'excluding_fraud', str_replace(',', '', $row[2]));
 							$total->appendChild($node);
 
 							// Unset $total, clearing memory
 							unset($total);
 
 						// Victim-based crime
-						$node = $dom->createElement('victim_based');
+						$node = $dom->createElementNS('http://www.cems.uwe.ac.uk/assignments/10008548/atwd/', 'victim_based');
 						$victim_based = $areas[$area_id]->appendChild($node);
 
 							// Violence against the person
-							$node = $dom->createElement('violence_against_the_person');
+							$node = $dom->createElementNS('http://www.cems.uwe.ac.uk/assignments/10008548/atwd/', 'violence_against_the_person');
 							$node->setAttribute('total', array_sum(array(str_replace(',', '', $row[5]), str_replace(',', '', $row[6]), str_replace(',', '', $row[7]))));
 							$violence_against_the_person = $victim_based->appendChild($node);
 
 								// Homicide
-								$node = $dom->createElement('homicide', str_replace(',', '', $row[5]));
+								$node = $dom->createElementNS('http://www.cems.uwe.ac.uk/assignments/10008548/atwd/', 'homicide', str_replace(',', '', $row[5]));
 								$violence_against_the_person->appendChild($node);
 
 								// Violence with injury
-								$node = $dom->createElement('violence_with_injury', str_replace(',', '', $row[6]));
+								$node = $dom->createElementNS('http://www.cems.uwe.ac.uk/assignments/10008548/atwd/', 'violence_with_injury', str_replace(',', '', $row[6]));
 								$violence_against_the_person->appendChild($node);
 
 								// Violence without injury
-								$node = $dom->createElement('violence_without_injury', str_replace(',', '', $row[7]));
+								$node = $dom->createElementNS('http://www.cems.uwe.ac.uk/assignments/10008548/atwd/', 'violence_without_injury', str_replace(',', '', $row[7]));
 								$violence_against_the_person->appendChild($node);
 
 								// Unset $violence_against_the_person, clearing memory
 								unset($violence_against_the_person);
 
 							// Sexual offences
-							$node = $dom->createElement('sexual_offences', str_replace(',', '', $row[8]));
+							$node = $dom->createElementNS('http://www.cems.uwe.ac.uk/assignments/10008548/atwd/', 'sexual_offences', str_replace(',', '', $row[8]));
 							$victim_based->appendChild($node);
 
 							// Robbery
-							$node = $dom->createElement('robbery', str_replace(',', '', $row[9]));
+							$node = $dom->createElementNS('http://www.cems.uwe.ac.uk/assignments/10008548/atwd/', 'robbery', str_replace(',', '', $row[9]));
 							$victim_based->appendChild($node);
 
 							// Theft offences
-							$node = $dom->createElement('theft_offences');
+							$node = $dom->createElementNS('http://www.cems.uwe.ac.uk/assignments/10008548/atwd/', 'theft_offences');
 							$node->setAttribute('total', array_sum(array(str_replace(',', '', $row[12]), str_replace(',', '', $row[13]), str_replace(',', '', $row[14]), str_replace(',', '', $row[15]), str_replace(',', '', $row[16]), str_replace(',', '', $row[17]), str_replace(',', '', $row[18]))));
 							$theft_offences = $victim_based->appendChild($node);
 
 								// Burglary
-								$node = $dom->createElement('burglary');
+								$node = $dom->createElementNS('http://www.cems.uwe.ac.uk/assignments/10008548/atwd/', 'burglary');
 								$node->setAttribute('total', array_sum(array(str_replace(',', '', $row[12]), str_replace(',', '', $row[13]))));
 								$burglary = $theft_offences->appendChild($node);
 
 									// Domestic burglary
-									$node = $dom->createElement('domestic', str_replace(',', '', $row[12]));
+									$node = $dom->createElementNS('http://www.cems.uwe.ac.uk/assignments/10008548/atwd/', 'domestic', str_replace(',', '', $row[12]));
 									$burglary->appendChild($node);
 
 									// Non-domestic burglary
-									$node = $dom->createElement('non_domestic', str_replace(',', '', $row[13]));
+									$node = $dom->createElementNS('http://www.cems.uwe.ac.uk/assignments/10008548/atwd/', 'non_domestic', str_replace(',', '', $row[13]));
 									$burglary->appendChild($node);
 
 									// Unset $burglary, clearing memory
 									unset($burglary);
 
 								// Vehicle offences
-								$node = $dom->createElement('vehicle_offences', str_replace(',', '', $row[14]));
+								$node = $dom->createElementNS('http://www.cems.uwe.ac.uk/assignments/10008548/atwd/', 'vehicle_offences', str_replace(',', '', $row[14]));
 								$theft_offences->appendChild($node);
 
 								// Theft from the person
-								$node = $dom->createElement('theft_from_the_person', str_replace(',', '', $row[15]));
+								$node = $dom->createElementNS('http://www.cems.uwe.ac.uk/assignments/10008548/atwd/', 'theft_from_the_person', str_replace(',', '', $row[15]));
 								$theft_offences->appendChild($node);
 
 								// Bicycle theft
-								$node = $dom->createElement('bicycle_theft', str_replace(',', '', $row[16]));
+								$node = $dom->createElementNS('http://www.cems.uwe.ac.uk/assignments/10008548/atwd/', 'bicycle_theft', str_replace(',', '', $row[16]));
 								$theft_offences->appendChild($node);
 
 								// Shoplifting
-								$node = $dom->createElement('shoplifting', str_replace(',', '', $row[17]));
+								$node = $dom->createElementNS('http://www.cems.uwe.ac.uk/assignments/10008548/atwd/', 'shoplifting', str_replace(',', '', $row[17]));
 								$theft_offences->appendChild($node);
 
 								// All other theft offences
-								$node = $dom->createElement('other', str_replace(',', '', $row[18]));
+								$node = $dom->createElementNS('http://www.cems.uwe.ac.uk/assignments/10008548/atwd/', 'other', str_replace(',', '', $row[18]));
 								$theft_offences->appendChild($node);
 
 								// Unset $theft_offences, clearing memory
 								unset($theft_offences);
 
 							// Criminal damage and arson
-							$node = $dom->createElement('criminal_damage_and_arson', str_replace(',', '', $row[19]));
+							$node = $dom->createElementNS('http://www.cems.uwe.ac.uk/assignments/10008548/atwd/', 'criminal_damage_and_arson', str_replace(',', '', $row[19]));
 							$victim_based->appendChild($node);
 
 							// Unset $victim_based, clearing memory
 							unset($victim_based);
 
 						// Other crimes against society
-						$node = $dom->createElement('other_crimes_against_society');
+						$node = $dom->createElementNS('http://www.cems.uwe.ac.uk/assignments/10008548/atwd/', 'other_crimes_against_society');
 						$node->setAttribute('total', array_sum(array(str_replace(',', '', $row[21]), str_replace(',', '', $row[22]), str_replace(',', '', $row[23]), str_replace(',', '', $row[24]), str_replace(',', '', $row[25]))));
 						$other_crimes_against_society = $areas[$area_id]->appendChild($node);
 
 							// Drug offences
-							$node = $dom->createElement('drug_offences', str_replace(',', '', $row[21]));
+							$node = $dom->createElementNS('http://www.cems.uwe.ac.uk/assignments/10008548/atwd/', 'drug_offences', str_replace(',', '', $row[21]));
 							$other_crimes_against_society->appendChild($node);
 
 							// Possession of weapons offences
-							$node = $dom->createElement('posession_of_weapons_offences', str_replace(',', '', $row[22]));
+							$node = $dom->createElementNS('http://www.cems.uwe.ac.uk/assignments/10008548/atwd/', 'posession_of_weapons_offences', str_replace(',', '', $row[22]));
 							$other_crimes_against_society->appendChild($node);
 
 							// Public order offences
-							$node = $dom->createElement('public_order_offences', str_replace(',', '', $row[23]));
+							$node = $dom->createElementNS('http://www.cems.uwe.ac.uk/assignments/10008548/atwd/', 'public_order_offences', str_replace(',', '', $row[23]));
 							$other_crimes_against_society->appendChild($node);
 
 							// Miscellaneous crimes against society
-							$node = $dom->createElement('miscellaneous', str_replace(',', '', $row[24]));
+							$node = $dom->createElementNS('http://www.cems.uwe.ac.uk/assignments/10008548/atwd/', 'miscellaneous', str_replace(',', '', $row[24]));
 							$other_crimes_against_society->appendChild($node);
 
 							// Fraud
-							$node = $dom->createElement('fraud', str_replace(',', '', $row[25]));
+							$node = $dom->createElementNS('http://www.cems.uwe.ac.uk/assignments/10008548/atwd/', 'fraud', str_replace(',', '', $row[26]));
 							$other_crimes_against_society->appendChild($node);
 
 							// Unset $other_crimes_against_society, clearing memory
@@ -201,11 +201,11 @@
 					if(preg_match('/(British Transport Police|Action Fraud1)$/', $row[0]))
 					{
 						$acronym = preg_replace('~\b(\w)|.~', '$1', $row[0]);
-						$region = $dom->createElement('region');
+						$region = $dom->createElementNS('http://www.cems.uwe.ac.uk/assignments/10008548/atwd/', 'region');
 						$region->setAttribute('id', strtolower(str_replace(' ', '_', str_replace('1', '', $acronym))));
 						$region = $crimes->appendChild($region);
 
-						$region_name = $dom->createElement('name', str_replace('1', '', $row[0]));
+						$region_name = $dom->createElementNS('http://www.cems.uwe.ac.uk/assignments/10008548/atwd/', 'name', str_replace('1', '', $row[0]));
 						$region_name = $region->appendChild($region_name);
 
 						foreach($areas as $area)
@@ -222,10 +222,16 @@
 			$row_count++;
 		}
 
-		if($dom->schemaValidateSource(file_get_contents(__DIR__.'/recorded_crime.xsd')))
+		if($dom->schemaValidate(__DIR__.'/recorded_crime.xsd'))
 		{
 			file_put_contents(__DIR__.'/recorded_crime.xml', $dom->saveXML());
 			move_uploaded_file($_FILES['csv']['tmp_name'], __DIR__.'/recorded_crime.csv');
+		}
+		else
+		{
+			header('Content-type: Text/XML');
+			print_r($dom->saveXML());
+			exit;
 		}
 	}
 ?>

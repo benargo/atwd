@@ -38,7 +38,8 @@
 		<div class="sixteen columns row">
 			<p>1. Download the <a href="recorded_crime.csv">CSV File</a> to upload.</p>
 			<form id="upload" action="upload" enctype="multipart/form-data" method="POST">
-				<input type="hidden" name="MAX_FILE_SIZE" value="32000" />
+				<input type="hidden" name="MAX_FILE_SIZE" value="32000">
+				<input type="hidden" name="year" value="6-2013">
 				<p>2. Upload a CSV file which will become the recorded crime data for England and Wales</p>
 				<p class="upload"><input type="file" name="csv"></p>
 			</form>

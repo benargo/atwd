@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<crimes timestamp="1387220425">
+<crimes timestamp="1387246229">
   <region id="north_east">
     <name>North East</name>
     <area id="cleveland">
@@ -1535,14 +1535,8 @@
       </other_crimes_against_society>
     </area>
   </region>
-  <region id="british_transport_police">
+  <region id="btp">
     <name>British Transport Police</name>
-  </region>
-  <region id="action_fraud">
-    <name>Action Fraud</name>
-  </region>
-  <region id="england_and_wales">
-    <name>ENGLAND AND WALES</name>
     <area id="british_transport_police">
       <name>British Transport Police</name>
       <total_recorded_crime>
@@ -1578,8 +1572,11 @@
         <fraud/>
       </other_crimes_against_society>
     </area>
-    <area id="action_fraud1">
-      <name>Action Fraud1</name>
+  </region>
+  <region id="af">
+    <name>Action Fraud</name>
+    <area id="action_fraud">
+      <name>Action Fraud</name>
       <total_recorded_crime>
         <including_fraud>150389</including_fraud>
         <excluding_fraud>..</excluding_fraud>

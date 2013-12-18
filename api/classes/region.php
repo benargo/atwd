@@ -2,12 +2,11 @@
 
 class region {
 
-	protected $id;
+	private $id;
 	public $name;
-	private $slug;
 	private $total_crime;
 	private $total_fraud;
-	private $areas;
+	private $areas = array();
 
 	/**
 	 * __construct()
@@ -20,9 +19,21 @@ class region {
 	{
 		// Load the region in from the XML
 		$xml = simplexml_load_file(BASEDIR .'data/recorded_crime.xml');
-		$region = $xml->xpath("/crimes/region[@id='$slug']");
+		$xml->registerXPathNamespace('atwd', 'http://www.cems.uwe.ac.uk/assignments/10008548/atwd/');
 
-		dump($region[0]);
+		$region = $xml->xpath("//atwd:region[@id='$slug']");
+		$region = $region[0];
+
+		$this->id = $slug;
+		$this->name = (string) $region->name;
+			
+		$areas = $xml->xpath("//atwd:region[@id='$slug']/atwd:area");
+		foreach($areas as $area)
+		{
+			$this->areas[(string) $area->attributes()['id']] = new area($area);
+		}
+
+		dump($this);
 
 		// Query the database to find this region
 	//	$db = new mysqli;

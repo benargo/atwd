@@ -26,6 +26,10 @@ define('BASEDIR', $_CEMS_SERVER['DOCUMENT_ROOT'] .'public_html/atwd/');
 // 3. Helpful Functions
 foreach(scandir('./functions/') as $file)
 {
+	if(is_dir($file))
+	{
+
+	}
 	if(substr($file, -4) == '.php')
 	{
 		require_once('./functions/'. $file);	
@@ -33,10 +37,11 @@ foreach(scandir('./functions/') as $file)
 }
 
 // 4. Classes
-foreach(scandir('./classes/') as $file)
+$iterator = new RecursiveDirectoryIterator(BASEDIR.'api/classes');
+foreach (new RecursiveIteratorIterator($iterator) as $filename => $file) 
 {
-	if(substr($file, -4) == '.php')
+	if(substr($file->getFileName(), -4) == '.php')
 	{
-		require_once('./classes/'. $file);
+		require_once($file->getPathName());
 	}
 }

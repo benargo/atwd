@@ -24,6 +24,11 @@ class region {
 		$xml->registerXPathNamespace('atwd', 'http://www.cems.uwe.ac.uk/assignments/10008548/atwd/');
 
 		$region = $xml->xpath("//atwd:region[@id='$slug']");
+		if(empty($region))
+		{
+			return;		
+		}
+
 		$region = $region[0];
 
 		$this->id = $slug;
@@ -81,8 +86,11 @@ class region {
 		else
 		{
 			$return = new region($region);
+			if(empty($return->name))
+			{
+				$return = false;
+			}
 		}
-
 		return $return;
 	}
 

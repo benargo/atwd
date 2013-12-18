@@ -29,4 +29,7 @@ BrowserMatch bMSIE !no-gzip !gzip-only-text/html
 	# 2. RESTful Service
 	RewriteCond %{REQUEST_METHOD} GET
 	RewriteRule ^crimes/([\-\d]+)/(xml|json)$ api/getAll.php?year=$1&response=$2 [L,QSA]
+
+	RewriteCond %{REQUEST_METHOD} GET
+	RewriteRule ^crimes/([\-\d]+)/(\w+)/(xml|json)$ api/get.php?year=$1&region=$2&response=$3 [L,QSA]
 </IfModule>

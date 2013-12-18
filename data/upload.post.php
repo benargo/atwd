@@ -60,7 +60,12 @@
 					$region = $crimes->appendChild($region);
 
 					// Region Name
-					$region_name = $dom->createElementNS('http://www.cems.uwe.ac.uk/assignments/10008548/atwd/', 'name', str_replace(' Region', '', $row[0]));
+					$region_name = $row[0];
+					if($row[0] == 'WALES')
+					{
+						$region_name = ucwords(strtolower($region_name));
+					}
+					$region_name = $dom->createElementNS('http://www.cems.uwe.ac.uk/assignments/10008548/atwd/', 'name', str_replace(' Region', '', $region_name));
 					$region_name = $region->appendChild($region_name);
 
 					foreach($areas as $area)

@@ -1,5 +1,7 @@
 <?php namespace uwe\atwd;
 
+if(!defined('BASEDIR')) exit('No direct script access allowed');
+
 class SimpleXMLIterator {
 
 	private static $xml = array();

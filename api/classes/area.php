@@ -1,5 +1,7 @@
 <?php namespace uwe\atwd;
 
+if(!defined('BASEDIR')) exit('No direct script access allowed');
+
 class area {
 
 	private $id;
@@ -32,6 +34,40 @@ class area {
 		{
 			$this->crime[$crimes->getName()] = SimpleXMLIterator::iterate($crimes);
 		}
+	}
+
+	/**
+	 * getTotalCrime()
+	 *
+	 * Gets the total crime level, including or excluding fraud
+	 *
+	 * @access public
+	 * @param bool $fraud
+	 * @return int $total
+	 */
+	public function getTotalCrime($fraud = false)
+	{
+		$total = $this->total_crime;
+
+		if($fraud)
+		{
+			$total += $this->total_fraud;
+		}
+
+		return $total;
+	}
+
+	/**
+	 * getTotalFraud()
+	 * 
+	 * Gets the total number of fraud
+	 *
+	 * @access public
+	 * @return int
+	 */
+	public function getTotalFraud()
+	{
+		return $this->total_fraud;
 	}
 
 }

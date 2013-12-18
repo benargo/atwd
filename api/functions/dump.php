@@ -1,6 +1,4 @@
-<?php namespace uwe\atwd;
-
-if(!defined('BASEDIR')) exit('No direct script access allowed');
+<?php if(!defined('BASEDIR')) exit('No direct script access allowed');
 
 if(!function_exists('dump'))
 {

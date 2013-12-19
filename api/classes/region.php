@@ -131,4 +131,27 @@ class region {
 			$this->total_fraud += $area->getTotalFraud();
 		}
 	}
+
+	/**
+	 * getAreas()
+	 *
+	 * @access public
+	 * @param mixed $which
+	 * @return array
+	 */
+	public function getAreas($which = NULL)
+	{
+		if(is_array($which))
+		{
+			return array_intersect_key($this->areas, $which);
+		}
+		elseif(is_string($which) && array_key_exists($which, $this->areas))
+		{
+			return $this->areas[$which];
+		}
+		else
+		{
+			return $this->areas;
+		}
+	}
 }

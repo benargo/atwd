@@ -33,7 +33,7 @@ if(!function_exists('fatal_handle'))
 				}
 			}
 
-			echo $error->respond();
+			echo $error->response();
 		}
 	}
 

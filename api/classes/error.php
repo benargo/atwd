@@ -184,7 +184,7 @@ class error {
 	 * @access public
 	 * @return text/html
 	 */
-	public function respond()
+	public function response()
 	{
 		$this->log();
 

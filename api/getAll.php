@@ -1,7 +1,7 @@
 <?php
 require_once('autoload.php');
 
-// Switch through the months and the years
+// Switch through the years
 switch($_GET['year'])
 {
 	case '6-2013':
@@ -9,7 +9,7 @@ switch($_GET['year'])
 
 	default:
 		$error = new uwe\atwd\error(404, 'User requested  figures that this API doesn\'t have.', __LINE__);
-		echo $error->respond();
+		echo $error->response();
 		exit;
 		break;
 }

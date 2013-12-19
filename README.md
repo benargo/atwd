@@ -16,9 +16,11 @@ All code is hosted at [Github](https://github.com/benargo/atwd).
 		1. [SimpleXMLIterator](http://www.cems.uwe.ac.uk/~b2-argo/atwd/api/classes/SimpleXMLIterator.phps)
 		2. [Region](http://www.cems.uwe.ac.uk/~b2-argo/atwd/api/classes/region.phps)
 		3. [Area](http://www.cems.uwe.ac.uk/~b2-argo/atwd/api/classes/area.phps)
+		4. [Error](http://www.cems.uwe.ac.uk/~b2-argo/atwd/api/classes/error.phps)
 	3. Functions
 		1. [dump()](http://www.cems.uwe.ac.uk/~b2-argo/atwd/api/functions/dump.phps)
 		2. [get_file()](http://www.cems.uwe.ac.uk/~b2-argo/atwd/api/functions/get_file.phps)
+		3. [fatal_error()](http://www.cems.uwe.ac.uk/~b2-argo/atwd/api/functions/fatal_error.phps)
 	4. RESTful Pages
 		1. [GET all regions](http://www.cems.uwe.ac.uk/~b2-argo/atwd/api/getAll.phps)
 

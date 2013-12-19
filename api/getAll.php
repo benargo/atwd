@@ -8,8 +8,9 @@ switch($_GET['year'])
 		break;
 
 	default:
-		$error = new \uwe\atwd\error\http_404;
-		dump($error);
+		$error = new uwe\atwd\error(404, 'User requested  figures that this API doesn\'t have.', __LINE__);
+		echo $error->respond();
+		exit;
 		break;
 }
 

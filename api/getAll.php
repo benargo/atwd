@@ -2,7 +2,7 @@
 require_once('autoload.php');
 
 // Switch through the years
-switch($_GET['year'])
+switch(uwe\atwd\uri::get('year'))
 {
 	case '6-2013':
 		break;
@@ -17,7 +17,7 @@ switch($_GET['year'])
 $regions = uwe\atwd\region::get('all');
 
 // Switch through the response formats
-switch($_GET['response'])
+switch(uwe\atwd\uri::get('response'))
 {
 	case 'xml':
 	default:
@@ -31,7 +31,7 @@ switch($_GET['response'])
 		$response = $dom->appendChild($node);
 
 		$node = $dom->createElement('crimes');
-		$node->setAttribute('year', $_GET['year']);
+		$node->setAttribute('year', uwe\atwd\uri::get('year');
 		$crimes = $response->appendChild($node);
 
 		foreach($regions as $key => $region)

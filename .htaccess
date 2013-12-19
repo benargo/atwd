@@ -33,4 +33,9 @@ BrowserMatch bMSIE !no-gzip !gzip-only-text/html
 
 	RewriteCond %{REQUEST_METHOD} GET
 	RewriteRule ^crimes/([\-\d]+)/(\w+)/(xml|json)$ api/get.php?year=$1&region=$2&response=$3 [L,QSA]
+
+	RewriteCond %{REQUEST_METHOD} GET
+	RewriteRule ^crimes/([\-\d]+)/put/(\w+):(\d+)/(xml|json)$ api/put.php?year=$1&region=$2&value=$3&response=$4 [L,QSA]
+
+	RewriteRule ^crimes/([\-\d]+)/(.*) api/catch_all.php [L,QSA]
 </IfModule>

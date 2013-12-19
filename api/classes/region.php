@@ -39,25 +39,23 @@ class region {
 			$this->areas[(string) $area->attributes()['id']] = new area($area);
 		}
 
-		// Query the database to find this region
-		$db = new \uwe\mysqli;
-		$query = $db->query("SELECT `id`,
-									`xml`
-							FROM `areas`
-							WHERE `region` = '". $this->id ."'");
-		
-		if($query->fetch_object())
+		$iterator = new \RecursiveDirectoryIterator(BASEDIR.'data/custom/areas');
+        foreach (new \RecursiveIteratorIterator($iterator) as $filename => $file) 
 		{
-			foreach($query->fetch_object() as $row)
-			{
-				if(array_key_exists($row->id, $this->areas))
-				{
-					$this->areas[$row->id] = new area(unserialize($row->xml));
-				}
-			}
+			$xml = simplexml_load_file($file);
+			dump($xml);
 		}
 
 		$this->_setTotalCrime();
+
+		// Check for overrides on the region
+		if(file_exists(BASEDIR .'data/custom/regions/'. $this->id .'.xml'))
+		{
+			$xml = simplexml_load_file(BASEDIR .'data/custom/regions/'. $this->id .'.xml');
+			$xml->registerXPathNamespace('atwd', 'http://www.cems.uwe.ac.uk/assignments/10008548/atwd/');
+
+			dump($xml);
+		}
 	}
 
 	/**

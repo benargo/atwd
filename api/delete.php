@@ -84,9 +84,9 @@ if($region && $area)
 			$json['response']['timestamp'] = time();
 			$json['response']['crimes']['year'] = uwe\atwd\uri::get('year');
 			$json['response']['crimes']['area']['id'] = $area->name;
-			$json['response']['crimes']['area']['deleted'] = $area->getTotalCrime(true);
+			$json['response']['crimes']['area']['deleted'][0] = $area->getTotalCrime(true);
 
-			$count = 0;
+			$count = 1;
 			foreach($area->iterate() as $key => $value)
 			{
 				if($value == 0)

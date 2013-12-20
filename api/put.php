@@ -24,17 +24,17 @@ $region = uwe\atwd\region::get(uwe\atwd\uri::get('region'));
 
 if($region)
 {
-	$dom = new DOMDocument;
-	$dom->formatOutput = true;
+	$previous_total = $region->getTotalCrime(true);
 
 	// Create the XML to save
 	if(file_exists(BASEDIR .'data/custom/regions/'. uwe\atwd\uri::get('region') .'.xml'))
 	{
-		$import = dom_import_simplexml(simplexml_load_file(BASEDIR .'data/custom/regions/'. uwe\atwd\uri::get('region') .'.xml'));
-		$dom_custom_data = $dom->appendChild($import)
+		$xml = simplexml_load_file(BASEDIR .'data/custom/regions/'. uwe\atwd\uri::get('region') .'.xml');
 	}
 	else
 	{
+		$dom = new DOMDocument;
+		$dom->formatOutput = true;
 		$node = $dom->createElementNS('http://www.cems.uwe.ac.uk/~b2-argo/atwd/', 'custom_data');
 		$node->setAttribute('timestamp', time());
 		$dom_custom_data = $dom->appendChild($node);
@@ -43,8 +43,26 @@ if($region)
 		$node->setAttribute('id', uwe\atwd\uri::get('region'));
 		$dom_region = $dom_custom_data->appendChild($node);
 
-		
+		$node = $dom->createElementNS('http://www.cems.uwe.ac.uk/~b2-argo/atwd/', 'name', $region->name);
+		$dom_region->appendChild($node);
+
+		$node = $dom->createElementNS('http://www.cems.uwe.ac.uk/~b2-argo/atwd/', 'total_recorded_crime');
+		$dom_total = $dom_region->appendChild($node);
+
+		$node = $dom->createElementNS('http://www.cems.uwe.ac.uk/~b2-argo/atwd/', 'including_fraud', $region->getTotalCrime(true));
+		$dom_total->appendChild($node);
+
+		$node = $dom->createElementNS('http://www.cems.uwe.ac.uk/~b2-argo/atwd/', 'excluding_fraud', $region->getTotalCrime(false));
+		$dom_total->appendChild($node);
+
+		$xml = simplexml_import_dom($dom);
 	}
+
+	$region->putTotalCrime((int) uwe\atwd\uri::get('value'));
+	$xml->region->total_recorded_crime->including_fraud = (int) uwe\atwd\uri::get('value');
+	$xml->region->total_recorded_crime->excluding_fraud = (int) (uwe\atwd\uri::get('value') - $region->getTotalFraud());
+
+	file_put_contents(BASEDIR .'data/custom/regions/'. uwe\atwd\uri::get('region') .'.xml', $xml->asXML());
 
 	// Switch through the response formats
 	switch(uwe\atwd\uri::get('response'))
@@ -57,7 +75,6 @@ if($region)
 
 			$node = $dom->createElement('response');
 			$node->setAttribute('timestamp', time());
-
 			$dom_response = $dom->appendChild($node);
 
 			$node = $dom->createElement('crimes');
@@ -66,16 +83,9 @@ if($region)
 
 			$node = $dom->createElement('region');
 			$node->setAttribute('id', ucwords($region->name));
+			$node->setAttribute('previous', $previous_total);
 			$node->setAttribute('total', $region->getTotalCrime(true));
 			$dom_region = $dom_crimes->appendChild($node);
-			
-			foreach($region->getAreas() as $area)
-			{
-				$node = $dom->createElement('area');
-				$node->setAttribute('id', ucwords($area->name));
-				$node->setAttribute('total', $area->getTotalCrime(true));
-				$dom_region->appendChild($node); 
-			}
 
 			echo $dom->saveXML();
 			break;
@@ -100,6 +110,6 @@ if($region)
 }
 else
 {
-	$error = new uwe\atwd\error(404, 'User requested figures for the region "'. uwe\atwd\uri::get('region') .'." Unfortunately that region doesn\'t exist', 16);
+	$error = new uwe\atwd\error(404, 'User requested to update figures for the region "'. uwe\atwd\uri::get('region') .'." Unfortunately that region doesn\'t exist', 16);
 	echo $error->response();
 }

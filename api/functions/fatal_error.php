@@ -2,6 +2,8 @@
 
 if(!function_exists('fatal_handle'))
 {
+	require_once(BASEDIR .'api/classes/error.php');
+
 	/**
 	 * fatal_handle()
 	 *

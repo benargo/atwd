@@ -31,7 +31,7 @@ switch(uwe\atwd\uri::get('response'))
 		$response = $dom->appendChild($node);
 
 		$node = $dom->createElement('crimes');
-		$node->setAttribute('year', uwe\atwd\uri::get('year');
+		$node->setAttribute('year', uwe\atwd\uri::get('year'));
 		$crimes = $response->appendChild($node);
 
 		foreach($regions as $key => $region)

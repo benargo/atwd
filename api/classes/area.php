@@ -4,7 +4,9 @@ if(!defined('BASEDIR')) exit('No direct script access allowed');
 
 class area {
 
-	private $id;
+	private static $iterations;
+
+	public $id;
 	public $name;
 	private $total_crime;
 	private $total_fraud;
@@ -15,7 +17,8 @@ class area {
 	 * __construct()
 	 * 
 	 * @access public
-	 * @param SimpleXMLElement $xml
+	 * @param \SimpleXMLElement $xml
+	 * @param string $region;
 	 * @return void
 	 */
 	function __construct(\SimpleXMLElement $xml)
@@ -68,6 +71,43 @@ class area {
 	public function getTotalFraud()
 	{
 		return $this->total_fraud;
+	}
+
+	/**
+	 * iterate()
+	 *
+	 * Iterate through all the crimes, returning each of the figures but stripping out the totals
+	 *
+	 * @access public
+	 * @param key $start
+	 * @return array ($key => $value)
+	 */
+	public function iterate($input = NULL, $fresh = true)
+	{
+		if($fresh)
+		{
+			self::$iterations = array();
+		}
+
+		if(!$input)
+		{
+			$input = $this->crime;
+		}
+
+
+		foreach($input as $key => $crime)
+		{
+			if(is_array($crime))
+			{
+				$this->iterate($crime, false);
+			}
+			else
+			{
+				self::$iterations[$key] = $crime;
+			}
+		}
+
+		return self::$iterations;
 	}
 
 }

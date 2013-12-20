@@ -4,7 +4,7 @@ if(!defined('BASEDIR')) exit('No direct script access allowed');
 
 class region {
 
-	private $id;
+	public $id;
 	public $name;
 	private $total_crime = 0;
 	private $total_fraud = 0;
@@ -42,8 +42,12 @@ class region {
 		$iterator = new \RecursiveDirectoryIterator(BASEDIR.'data/custom/areas');
         foreach (new \RecursiveIteratorIterator($iterator) as $filename => $file) 
 		{
-			$xml = simplexml_load_file($file);
-			dump($xml);
+			if(in_array($this->id, explode('/', str_replace(BASEDIR, '', $filename))))
+			{
+				$xml = simplexml_load_file($filename);
+				$area = new area($xml->region->area, $this->id);
+				$this->areas[$area->id] = $area;
+			}
 		}
 
 		$this->_setTotalCrime();
@@ -52,9 +56,7 @@ class region {
 		if(file_exists(BASEDIR .'data/custom/regions/'. $this->id .'.xml'))
 		{
 			$xml = simplexml_load_file(BASEDIR .'data/custom/regions/'. $this->id .'.xml');
-			$xml->registerXPathNamespace('atwd', 'http://www.cems.uwe.ac.uk/assignments/10008548/atwd/');
-
-			dump($xml);
+			$this->putTotalCrime($xml->region->total_recorded_crime->including_fraud);
 		}
 	}
 
@@ -131,6 +133,19 @@ class region {
 	}
 
 	/**
+	 * getTotalFraud()
+	 *
+	 * Gets the total number of fraud offenses
+	 *
+	 * @access public
+	 * @return int
+	 */
+	public function getTotalFraud()
+	{
+		return $this->total_fraud;
+	}
+
+	/**
 	 * getAreas()
 	 *
 	 * @access public
@@ -151,5 +166,100 @@ class region {
 		{
 			return $this->areas;
 		}
+	}
+
+	/**
+	 * getTotalEngland()
+	 *
+	 * Gets the total crime figure for all of England
+	 *
+	 * @access public
+	 * @static true
+	 * @param bool $fraud - If true, returns the total including fraud
+	 * @return int $total
+	 */
+	public static function getTotalEngland($fraud = false)
+	{
+		$total = 0;
+		foreach(self::get() as $region_id => $region)
+		{
+			if($region_id == 'Wales')
+			{
+				continue;
+			}
+			$total += $region->getTotalCrime($fraud);
+		}
+
+		return $total;
+	}
+
+	/**
+	 * getTotalEnglandAndWales()
+	 *
+	 * Gets the total crime figure for all of England AND Wales
+	 *
+	 * @access public
+	 * @static true
+	 * @param bool $fraud - If true, returns the total including fraud
+	 * @return int $total
+	 */
+	public static function getTotalEnglandAndWales($fraud = false)
+	{
+		$total = 0;
+		foreach(self::get() as $region_id => $region)
+		{
+			$total += $region->getTotalCrime($fraud);
+		}
+
+		return $total;
+	}
+
+	/**
+	 * CRUD OPERATIONS
+	 */
+
+	/** 
+	 * putTotalCrime()
+	 *
+	 * Updates the total crime MINUS ANY FRAUD (this figure stays the same) using HTTP PUT
+	 *
+	 * @access public
+	 * @param int $new_total
+	 * @return void
+	 */
+	public function putTotalCrime($new_total)
+	{
+		$this->total_crime = $new_total - $this->total_fraud;
+	}
+
+	/**
+	 * postArea()
+	 * 
+	 * POSTs a new area to the end of the current list of areas
+	 *
+	 * @access public
+	 * @param uwe\atwd\area object
+	 * @return bool
+	 */
+	public function postArea(area $area)
+	{
+		$this->areas[$area->id] = $area;
+		$this->_setTotalCrime();
+	}
+
+	/**
+	 * deleteArea()
+	 *
+	 * Deletes an area from this object (does not remove it from the Database)
+	 * Then resets the total crime for this object
+	 *
+	 * @access public
+	 * @param string $area_name
+	 * @return void
+	 */
+	public function deleteArea($area_name)
+	{
+		unset($this->areas[$area_name]);
+		$this->_setTotalCrime();
 	}
 }

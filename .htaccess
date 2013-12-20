@@ -2,7 +2,7 @@ Options -Indexes
 
 # Error Logs
 php_flag log_errors on
-php_flag display_errors 0
+php_flag display_errors 1
 php_value error_log logs/error.log
 
 # Compression
@@ -36,6 +36,12 @@ BrowserMatch bMSIE !no-gzip !gzip-only-text/html
 
 	RewriteCond %{REQUEST_METHOD} GET
 	RewriteRule ^crimes/([\-\d]+)/put/(\w+):(\d+)/(xml|json)$ api/put.php?year=$1&region=$2&value=$3&response=$4 [L,QSA]
+
+	RewriteCond %{REQUEST_METHOD} GET
+	RewriteRule ^crimes/([\-\d]+)/post/(\w+)/(\w+)/([\w\-\:]+)/(xml|json)$ api/post.php?year=$1&region=$2&area=$3&params=$4&response=$5 [L,QSA]
+
+	RewriteCond %{REQUEST_METHOD} GET
+	RewriteRule ^crimes/([\-\d]+)/delete/(\w+)/(xml|json)$ api/delete.php?year=$1&area=$2&response=$3 [L,QSA]
 
 	RewriteRule ^crimes/([\-\d]+)/(.*) api/catch_all.php [L,QSA]
 </IfModule>

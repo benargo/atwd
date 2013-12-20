@@ -97,6 +97,9 @@ if($region && $area)
 				$json['response']['crimes']['area']['deleted'][$count]['total'] = $value;
 				$count++;
 			}
+			
+			$json['response']['crimes']['england']['total'] = uwe\atwd\region::getTotalEngland(true);
+			$json['response']['crimes']['england_wales']['total'] = uwe\atwd\region::getTotalEnglandAndWales(true);
 
 			echo json_encode($json);
 	}

@@ -15,6 +15,7 @@ All code is hosted at [Github](https://github.com/benargo/atwd).
 	3. [POST CSV Processor](https://github.com/benargo/atwd/blob/master/data/upload.post.php) ([Backup](http://www.cems.uwe.ac.uk/~b2-argo/atwd/data/upload.post.phps))
 	3. [Generated XML File](https://github.com/benargo/atwd/blob/master/data/recorded_crime.xml) ([Backup](http://www.cems.uwe.ac.uk/~b2-argo/atwd/data/recorded_crime.xml))
 	4. [XSD Schema](https://github.com/benargo/atwd/blob/master/data/recorded_crime.xsd) ([Backup](http://www.cems.uwe.ac.uk/~b2-argo/atwd/data/recorded_crime.xsd))
+	5. [Custom Areas template](https://github.com/benargo/atwd/blob/master/data/custom_areas.template.xml) ([Backup](http://www.cems.uwe.ac.uk/~b2-argo/atwd/data/custom_areas.template.xml))
 2. RESTful Service
 	1. [Autoloader](https://github.com/benargo/atwd/blob/master/api/autoload.php) ([Backup](http://www.cems.uwe.ac.uk/~b2-argo/atwd/api/autoload.phps))
 	2. Classes
@@ -35,5 +36,6 @@ All code is hosted at [Github](https://github.com/benargo/atwd).
 		4. [POST (create) new area](https://github.com/benargo/atwd/blob/master/api/post.php) ([Backup](http://www.cems.uwe.ac.uk/~b2-argo/atwd/api/post.phps))
 		5. [DELETE custom area](https://github.com/benargo/atwd/blob/master/api/delete.php) ([Backup](http://www.cems.uwe.ac.uk/~b2-argo/atwd/api/delete.phps))
 		6. [Catch for unmapped requests](https://github.com/benargo/atwd/blob/master/api/catch_all.php) ([Backup](http://www.cems.uwe.ac.uk/~b2-argo/atwd/api/catch_all.phps))
+3. Client Side Processing & Visualization
 
 ![UWE logo](http://www.cems.uwe.ac.uk/~b2-argo/atwd/media/images/uwe.75px.png)

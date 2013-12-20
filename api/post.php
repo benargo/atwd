@@ -99,6 +99,14 @@ if($region)
 				$dom_area->appendChild($node);
 			}
 
+			$node = $dom->createElement('england');
+			$node->setAttribute('total', uwe\atwd\region::getTotalEngland(true));
+			$dom_crimes->appendChild($node);
+
+			$node = $dom->createElement('england_wales');
+			$node->setAttribute('total', uwe\atwd\region::getTotalEnglandAndWales(true));
+			$dom_crimes->appendChild($node);
+
 			echo $dom->saveXML();
 			break;
 
@@ -118,6 +126,9 @@ if($region)
 				$json['response']['crimes']['region']['area']['recorded'][$count]['total'] = $param;
 				$count++;
 			}
+
+			$json['response']['crimes']['england']['total'] = uwe\atwd\region::getTotalEngland(true);
+			$json['response']['crimes']['england_wales']['total'] = uwe\atwd\region::getTotalEnglandAndWales(true);
 
 			echo json_encode($json);
 	}

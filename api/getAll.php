@@ -26,7 +26,7 @@ switch(uwe\atwd\uri::get('response'))
 		$dom->formatOutput = true;
 
 		$node = $dom->createElement('response');
-		$node->setAttribute('timesamp', time());
+		$node->setAttribute('timestamp', time());
 
 		$response = $dom->appendChild($node);
 

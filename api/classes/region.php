@@ -51,13 +51,6 @@ class region {
 		}
 
 		$this->_setTotalCrime();
-
-		// Check for overrides on the region
-		if(file_exists(BASEDIR .'data/custom/regions/'. $this->id .'.xml'))
-		{
-			$xml = simplexml_load_file(BASEDIR .'data/custom/regions/'. $this->id .'.xml');
-			$this->putTotalCrime($xml->region->total_recorded_crime->including_fraud);
-		}
 	}
 
 	/**
@@ -125,10 +118,19 @@ class region {
 	 */
 	private function _setTotalCrime()
 	{
-		foreach($this->areas as $key => $area)
-		{
-			$this->total_crime += $area->getTotalCrime(false);
-			$this->total_fraud += $area->getTotalFraud();
+		// Check for overrides on the region
+        if(file_exists(BASEDIR .'data/custom/regions/'. $this->id .'.xml'))
+        {
+            $xml = simplexml_load_file(BASEDIR .'data/custom/regions/'. $this->id .'.xml');
+            $this->total_crime = $xml->region->total_recorded_crime->including_fraud - $this->total_fraud;
+        }
+        else
+        {
+        	foreach($this->areas as $key => $area)
+			{
+				$this->total_crime += $area->getTotalCrime(false);
+				$this->total_fraud += $area->getTotalFraud();
+			}
 		}
 	}
 
@@ -183,7 +185,7 @@ class region {
 		$total = 0;
 		foreach(self::get() as $region_id => $region)
 		{
-			if($region_id == 'Wales')
+			if($region_id == 'wales')
 			{
 				continue;
 			}
@@ -229,7 +231,43 @@ class region {
 	 */
 	public function putTotalCrime($new_total)
 	{
-		$this->total_crime = $new_total - $this->total_fraud;
+		// Create the XML to save
+		if(file_exists(BASEDIR .'data/custom/regions/'. $this->id .'.xml'))
+		{
+			$xml = simplexml_load_file(BASEDIR .'data/custom/regions/'. $this->id .'.xml');
+		}
+		else
+		{
+			$dom = new \DOMDocument;
+			$dom->formatOutput = true;
+			$node = $dom->createElementNS('http://www.cems.uwe.ac.uk/~b2-argo/atwd/', 'custom_data');
+			$node->setAttribute('timestamp', time());
+			$dom_custom_data = $dom->appendChild($node);
+
+			$node = $dom->createElementNS('http://www.cems.uwe.ac.uk/~b2-argo/atwd/', 'region');
+			$node->setAttribute('id', $this->id);
+			$dom_region = $dom_custom_data->appendChild($node);
+
+			$node = $dom->createElementNS('http://www.cems.uwe.ac.uk/~b2-argo/atwd/', 'name', $this->name);
+			$dom_region->appendChild($node);
+
+			$node = $dom->createElementNS('http://www.cems.uwe.ac.uk/~b2-argo/atwd/', 'total_recorded_crime');
+			$dom_total = $dom_region->appendChild($node);
+
+			$node = $dom->createElementNS('http://www.cems.uwe.ac.uk/~b2-argo/atwd/', 'including_fraud', $this->getTotalCrime(true));
+			$dom_total->appendChild($node);
+
+			$node = $dom->createElementNS('http://www.cems.uwe.ac.uk/~b2-argo/atwd/', 'excluding_fraud', $this->getTotalCrime(false));
+			$dom_total->appendChild($node);
+
+			$xml = simplexml_import_dom($dom);
+		}
+
+		$this->total_crime = $new_total;
+		$xml->region->total_recorded_crime->including_fraud = (int) $new_total;
+		$xml->region->total_recorded_crime->excluding_fraud = (int) $new_total - $this->getTotalFraud();
+
+		file_put_contents(BASEDIR .'data/custom/regions/'. $this->id .'.xml', $xml->asXML());
 	}
 
 	/**
@@ -243,8 +281,14 @@ class region {
 	 */
 	public function postArea(area $area)
 	{
+		$total_crime = $this->total_crime + $area->getTotalCrime(false);
+		if(array_key_exists($area->id, $this->areas))
+		{
+			$total_crime -= $this->areas[$area->id]->getTotalCrime(false);
+		}
 		$this->areas[$area->id] = $area;
-		$this->_setTotalCrime();
+		$this->putTotalCrime($total_crime);
+
 	}
 
 	/**
@@ -259,7 +303,7 @@ class region {
 	 */
 	public function deleteArea($area_name)
 	{
+		$this->putTotalCrime($this->total_crime - $this->areas[$area_name]->getTotalCrime(false));
 		unset($this->areas[$area_name]);
-		$this->_setTotalCrime();
 	}
 }

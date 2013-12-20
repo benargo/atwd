@@ -25,44 +25,7 @@ $region = uwe\atwd\region::get(uwe\atwd\uri::get('region'));
 if($region)
 {
 	$previous_total = $region->getTotalCrime(true);
-
-	// Create the XML to save
-	if(file_exists(BASEDIR .'data/custom/regions/'. uwe\atwd\uri::get('region') .'.xml'))
-	{
-		$xml = simplexml_load_file(BASEDIR .'data/custom/regions/'. uwe\atwd\uri::get('region') .'.xml');
-	}
-	else
-	{
-		$dom = new DOMDocument;
-		$dom->formatOutput = true;
-		$node = $dom->createElementNS('http://www.cems.uwe.ac.uk/~b2-argo/atwd/', 'custom_data');
-		$node->setAttribute('timestamp', time());
-		$dom_custom_data = $dom->appendChild($node);
-
-		$node = $dom->createElementNS('http://www.cems.uwe.ac.uk/~b2-argo/atwd/', 'region');
-		$node->setAttribute('id', uwe\atwd\uri::get('region'));
-		$dom_region = $dom_custom_data->appendChild($node);
-
-		$node = $dom->createElementNS('http://www.cems.uwe.ac.uk/~b2-argo/atwd/', 'name', $region->name);
-		$dom_region->appendChild($node);
-
-		$node = $dom->createElementNS('http://www.cems.uwe.ac.uk/~b2-argo/atwd/', 'total_recorded_crime');
-		$dom_total = $dom_region->appendChild($node);
-
-		$node = $dom->createElementNS('http://www.cems.uwe.ac.uk/~b2-argo/atwd/', 'including_fraud', $region->getTotalCrime(true));
-		$dom_total->appendChild($node);
-
-		$node = $dom->createElementNS('http://www.cems.uwe.ac.uk/~b2-argo/atwd/', 'excluding_fraud', $region->getTotalCrime(false));
-		$dom_total->appendChild($node);
-
-		$xml = simplexml_import_dom($dom);
-	}
-
-	$region->putTotalCrime((int) uwe\atwd\uri::get('value'));
-	$xml->region->total_recorded_crime->including_fraud = (int) uwe\atwd\uri::get('value');
-	$xml->region->total_recorded_crime->excluding_fraud = (int) (uwe\atwd\uri::get('value') - $region->getTotalFraud());
-
-	file_put_contents(BASEDIR .'data/custom/regions/'. uwe\atwd\uri::get('region') .'.xml', $xml->asXML());
+	$region->putTotalCrime(uwe\atwd\uri::get('value'));
 
 	// Switch through the response formats
 	switch(uwe\atwd\uri::get('response'))

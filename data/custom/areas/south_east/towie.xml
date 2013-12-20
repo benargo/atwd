@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<custom_data>
+	<region id="south_east">
+	  	<name>South East</name>
+		<area id="towie">
+		  	<name>Towie</name>
+		  	<total_recorded_crime>
+				<including_fraud>44</including_fraud>
+				<excluding_fraud>44</excluding_fraud>
+		  	</total_recorded_crime>
+		  	<victim_based>
+				<violence_against_the_person total="44">
+			  		<homicide>4</homicide>
+			  		<violence_with_injury>15</violence_with_injury>
+			  		<violence_without_injury>25</violence_without_injury>
+				</violence_against_the_person>
+				<sexual_offences>0</sexual_offences>
+				<robbery>0</robbery>
+				<theft_offences total="0">
+			  		<burglary total="0">
+						<domestic>0</domestic>
+						<non_domestic>0</non_domestic>
+			  		</burglary>
+			  		<vehicle_offences>0</vehicle_offences>
+			  		<theft_from_the_person>0</theft_from_the_person>
+			  		<bicycle_theft>0</bicycle_theft>
+			  		<shoplifting>0</shoplifting>
+			  		<other>0</other>
+				</theft_offences>
+				<criminal_damage_and_arson>0</criminal_damage_and_arson>
+		  	</victim_based>
+		  	<other_crimes_against_society total="0">
+				<drug_offences>0</drug_offences>
+				<posession_of_weapons_offences>0</posession_of_weapons_offences>
+				<public_order_offences>0</public_order_offences>
+				<miscellaneous>0</miscellaneous>
+				<fraud>0</fraud>
+		  	</other_crimes_against_society>
+		</area>
+	</region>
+</custom_data>

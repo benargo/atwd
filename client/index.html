@@ -16,6 +16,7 @@
 	<link rel="stylesheet" href="../media/css/base.css">
 	<link rel="stylesheet" href="../media/css/skeleton.css">
 	<link rel="stylesheet" href="../media/css/layout.css">
+	<link rel="stylesheet" href="../media/css/client.css">
 
 	<!--[if lt IE 9]>
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -24,27 +25,24 @@
 	<!-- JavaScript -->
 	<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 	<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-	<script src="../media/js/data-upload.js"></script>
+	<script src="//code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+	<script src="../media/js/client.js"></script>
 
 </head>
 <body>
 
 	<div class="container">
-		<div class="sixteen columns">
+		<header class="sixteen columns">
 			<h1 class="remove-bottom" style="margin-top: 40px">Browser</h1>
 			<h5>Police Recorded Crime for England &amp; Wales</h5>
 			<hr />
-		</div>
+		</header>
 
-		<article id="application" class="twelve columns row">
-			
-		</article>
-
-		<!-- Content -->
-		<article id="index">
+		<article>
 			<div class="four columns">
-				<h2>GET</h2>
-				<p><a href="#" id="get-region">Get a specific region</p>
+				<h2>GET</h2>				
+				<!--<p><a href="#" id="get-all">Get all regions</a></p>-->
+				<p><a href="./get-region.html">Get a specific region</a></p>
 			</div>
 
 			<div class="four columns">

@@ -45,3 +45,6 @@ foreach (new RecursiveIteratorIterator($iterator) as $filename => $file)
 		require_once($file->getPathName());
 	}
 }
+
+// Enable requests from off campus
+header("Access-Control-Allow-Origin: *");

@@ -1,17 +1,15 @@
 $(function(){
-	$('#index a').click(function(event){
-		event.preventDefault();
-		$('#application').delay(3000).fadeIn(1000);
-		$('#index').addClass('columns', 0).addClass('four', {
-			duration: 3000,
-			queue: false
-		}).addClass('offset-by-twelve', {
-			duration: 3000,
-			queue: false,
-			complete: function()
-			{
-				$('#index').removeClass('offset-by-twelve', 0);
-			}
+	$('#get-region select[name="select-region"]').change(function() {
+		var time_period = $('#get-region select[name="time-period"]').val();
+		var region_name = $(this).val().replace(/ /g,'_').toLowerCase();
+		$.ajax({
+			url: 'http://www.cems.uwe.ac.uk/~b2-argo/atwd/crimes/'+ time_period + '/'+ region_name + '/json',
+			crossDomain: true
+		}).done(function(data) {
+			alert('hi');
+			console.log(data);
+			window.localStorage.setItem('cache_'+ region_name, JSON.stringify(data));
+			//$.jqplot('bar')
 		});
 	});
 });

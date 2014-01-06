@@ -37,8 +37,9 @@ $(function(){
 				};
 				var pieData = [];
 
-				// Reset the key
-				$('section.chart.key p').remove();
+				// Reset the key and totals
+				$('section.chart p').remove();
+
 
 				$.each(data.response.crimes.region.area, function(key, area) {
 					barData.datasets.push({
@@ -51,9 +52,11 @@ $(function(){
 						color: chartColors[key]
 					});
 
-					$('section.chart.key').append('<p class="key item'+ key +'">'+ area.id +'</p>');
+					$('section.chart.key').append('<p class="key item'+ key +'">'+ area.id +' ('+ area.total +')</p>');
 				});
 				
+				$('section.chart.key').append('<p class="key total">'+ data.response.crimes.region.id +' total: '+ data.response.crimes.region.total);
+
 				// Produce the bar chart
 				$('canvas#bar').remove();
 				$('section.bar.chart').append('<canvas id="bar" height="300" width="700"></canvas>');

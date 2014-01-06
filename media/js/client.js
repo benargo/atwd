@@ -8,11 +8,6 @@ $(function(){
 		var time_period = $('#get-region select[name="time-period"]').val();
 		var region_name = $(this).val().replace(/ /g,'_').toLowerCase();
 
-		if(window.localStorage.getItem('cache_'+ region_name))
-		{
-			var data = window.localStorage.getItem('cache_'+ region_name);
-		}
-
 		// If the region name is valid
 		if(region_name)
 		{
@@ -23,9 +18,10 @@ $(function(){
 				ifModified: true,
 			}).done(function(returned_data, textStatus, jqXHR) {
 
-				// Unset the chart data
-				barData = {};
-				pieData = [];
+				if(window.localStorage.getItem('cache_'+ region_name))
+				{
+					var data = JSON.parse(window.localStorage.getItem('cache_'+ region_name));
+				}
 
 	    		if(jqXHR.status == 200)
 	    		{

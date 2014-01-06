@@ -37,5 +37,20 @@ All code is hosted at [Github](https://github.com/benargo/atwd).
 		5. [DELETE custom area](https://github.com/benargo/atwd/blob/master/api/delete.php) ([Backup](http://www.cems.uwe.ac.uk/~b2-argo/atwd/api/delete.phps))
 		6. [Catch for unmapped requests](https://github.com/benargo/atwd/blob/master/api/catch_all.php) ([Backup](http://www.cems.uwe.ac.uk/~b2-argo/atwd/api/catch_all.phps))
 3. Client Side Processing & Visualization
+	1. [Index page](https://github.com/benargo/atwd/blob/master/client/index.html) ([Backup](http://www.cems.uwe.ac.uk/~b2-argo/atwd/client/))
+	2. [Get a specific region](https://github.com/benargo/atwd/blob/master/client/get-region.html) ([Backup](http://www.cems.uwe.ac.uk/~b2-argo/atwd/client/get-region.html))
+4. CSS, JavaScript and Images
+	1. CSS
+		1. [base.css](https://github.com/benargo/atwd/blob/master/media/css/base.css) ([Backup](http://www.cems.uwe.ac.uk/~b2-argo/atwd/media/css/base.css))
+		2. [custom.scss](https://github.com/benargo/atwd/blob/master/media/css/custom.scss) ([Backup](http://www.cems.uwe.ac.uk/~b2-argo/atwd/media/css/custom.scss))
+		3. [layout.css](https://github.com/benargo/atwd/blob/master/media/css/layout.css) ([Backup](http://www.cems.uwe.ac.uk/~b2-argo/atwd/media/css/layout.css))
+		4. [skeleton.css](https://github.com/benargo/atwd/blob/master/media/css/skeleton.css) ([Backup](http://www.cems.uwe.ac.uk/~b2-argo/atwd/media/css/skeleton.css))
+	2. JavaScript
+		1. [Data Upload](https://github.com/benargo/atwd/blob/master/media/js/data-upload.js) ([Backup](http://www.cems.uwe.ac.uk/~b2-argo/atwd/media/js/data-upload.js))
+		2. [Chart.js Library](https://github.com/benargo/atwd/blob/master/media/js/chart.js) ([Backup](www.cems.uwe.ac.uk/~b2-argo/atwd/media/js/chart.js))
+		3. [Client Processing](https://github.com/benargo/atwd/blob/master/media/js/client.js) ([Backup](http://www.cems.uwe.ac.uk/~b2-argo/atwd/media/js/client.js))
+	3. Images
+		1. [Home Office logo](http://www.cems.uwe.ac.uk/~b2-argo/atwd/media/images/home_office.75px.png) (&copy; 2013 Crown Copyright)
+		2. [UWE logo](http://www.cems.uwe.ac.uk/~b2-argo/atwd/media/images/uwe.75px.png) (&copy; 2013 University of the West of England, Bristol)
 
 ![UWE logo](http://www.cems.uwe.ac.uk/~b2-argo/atwd/media/images/uwe.75px.png)

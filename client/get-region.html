@@ -16,9 +16,8 @@
 	<![endif]-->
 
 	<!-- JavaScript -->
-	<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-	<script src="//code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 	<script src="../media/js/chart.js"></script>
 	<script src="../media/js/client.js"></script>
 
@@ -27,8 +26,7 @@
 	<link rel="stylesheet" href="../media/css/base.css">
 	<link rel="stylesheet" href="../media/css/skeleton.css">
 	<link rel="stylesheet" href="../media/css/layout.css">
-	<link rel="stylesheet" href="../media/css/client.css">
-	<link rel="stylesheet" href="../media/css/jquery.jqplot.css">
+	<link rel="stylesheet" href="../media/css/custom.css">
 
 </head>
 <body>
@@ -74,11 +72,11 @@
 					</select></p>
 				</section>
 			</form>
-			<section class="chart twelve colums alpha omega row" style="display: none;">
+			<section class="bar chart twelve colums alpha omega row" style="display: none;">
 				<h3>Bar Chart</h3>
 				<canvas id="bar" height="300" width="700"></canvas>
 			</section>
-			<section class="chart twelve columns alpha omega row" style="display: none;">
+			<section class="pie chart twelve columns alpha omega row" style="display: none;">
 				<h3>Pie Chart</h3>
 				<canvas id="pie" height="400" width="700"></canvas>
 			</section>
@@ -97,10 +95,8 @@
 			<h3>DELETE</h3>
 
 			<section class="chart key" style="display: none;">
+				<hr>
 				<h3>Chart Key</h3>
-				<ul>
-
-				</ul>
 			</section>
 		</aside>
 

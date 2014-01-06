@@ -1,0 +1,24 @@
+p.key {
+  margin: 0;
+  padding: 3px; }
+  p.key.item0 {
+    background-color: #6CD5FF; }
+  p.key.item1 {
+    background-color: #6EE862; }
+  p.key.item2 {
+    background-color: #FFE078; }
+  p.key.item3 {
+    background-color: #E87662; }
+  p.key.item4 {
+    background-color: #BB78FF; }
+  p.key.item5 {
+    background-color: #512DFF;
+    color: #fff; }
+  p.key.item6 {
+    background-color: #46E8BA; }
+  p.key.item7 {
+    background-color: #E2FF59; }
+  p.key.item8 {
+    background-color: #E89F46; }
+  p.key.item9 {
+    background-color: #FF59B8; }

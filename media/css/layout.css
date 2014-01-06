@@ -37,6 +37,17 @@ p.upload input {
     cursor: pointer !important;
 }
 
+p code {
+	display: inline-block;
+	background-color: #FFE078;
+	font-family: monospace;
+	padding: 2px;
+	margin: -2px;
+	border: solid 0px transparent;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
+
 /* #Media Queries
 ================================================== */
 

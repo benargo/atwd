@@ -61,5 +61,8 @@ All code is hosted at [Github](https://github.com/benargo/atwd) with backups on 
 3. Images
 	1. [Home Office logo](http://www.cems.uwe.ac.uk/~b2-argo/atwd/media/images/home_office.75px.png) (&copy; 2013 Crown Copyright)
 	2. [UWE logo](http://www.cems.uwe.ac.uk/~b2-argo/atwd/media/images/uwe.75px.png) (&copy; 2013 University of the West of England, Bristol)
+	
+### 5. Other Files
+1. [.htaccess](https://github.com/benargo/atwd/blob/master/.htaccess)
 
 ![UWE logo](http://www.cems.uwe.ac.uk/~b2-argo/atwd/media/images/uwe.75px.png)

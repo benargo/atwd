@@ -22,3 +22,5 @@ p.key {
     background-color: #E89F46; }
   p.key.item9 {
     background-color: #FF59B8; }
+  p.key.total {
+    font-weight: bold; }

@@ -80,11 +80,6 @@ switch(uwe\atwd\uri::get('response'))
 		// Loop through the regions;
 		foreach($regions as $key => $region)
 		{
-			if(!isset($count))
-			{
-				$count = 0;
-			}
-
 			if($key != 'wales')
 			{
 				if(!isset($england))
@@ -96,16 +91,12 @@ switch(uwe\atwd\uri::get('response'))
 
 			if($key == 'btp' || $key == 'af')
 			{
-				$json['response']['crimes']['national'][$count]['id'] = $region->name;
-				$json['response']['crimes']['national'][$count]['total'] = $region->getTotalCrime(true);
+				$json['response']['crimes']['national'][] = array('id' => $region->name, 'total' => $region->getTotalCrime(true));
 			}
 			else
 			{
-				$json['response']['crimes']['region'][$count]['id'] = $region->name;
-				$json['response']['crimes']['region'][$count]['total'] = $region->getTotalCrime(true);
+				$json['response']['crimes']['region'][] = array('id' => $region->name, 'total' => $region->getTotalCrime(true));
 			}
-
-			$count++;
 		}
 
 		$json['response']['crimes']['england']['total'] = $england;

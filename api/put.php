@@ -59,14 +59,7 @@ if($region)
 			$json['response']['crimes']['year'] = uwe\atwd\uri::get('year');
 			$json['response']['crimes']['region']['id'] = $region->name;
 			$json['response']['crimes']['region']['total'] = $region->getTotalCrime(true);
-			
-			$count = 0;
-			foreach($region->getAreas() as $area)
-			{
-				$json['response']['crimes']['region']['area'][$count]['id'] = $area->name;
-				$json['response']['crimes']['region']['area'][$count]['total'] = $area->getTotalCrime(true);
-				$count++;
-			}
+			$json['response']['crimes']['region']['previous'] = $previous_total;
 
 			echo json_encode($json);
 	}

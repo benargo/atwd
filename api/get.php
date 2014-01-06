@@ -14,7 +14,7 @@ switch(uwe\atwd\uri::get('year'))
 		break;
 }
 
-// British Transport Police's ID is 'btp'
+// British Transport Police's ID in the database is 'btp'
 if(uwe\atwd\uri::get('region') == 'british_transport_police')
 {
 	uwe\atwd\uri::set('region', 'btp');

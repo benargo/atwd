@@ -46,5 +46,5 @@ foreach (new RecursiveIteratorIterator($iterator) as $filename => $file)
 	}
 }
 
-// Enable requests from off campus
+// Enable requests from off campus - like a true API should
 header("Access-Control-Allow-Origin: *");

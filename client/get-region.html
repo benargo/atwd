@@ -19,7 +19,7 @@
 	<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 	<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 	<script src="//code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-	<script src="../media/js/jquery.jqplot.js"></script>
+	<script src="../media/js/chart.js"></script>
 	<script src="../media/js/client.js"></script>
 
 	<!-- CSS -->
@@ -43,35 +43,45 @@
 		<article class="twelve columns">
 			<form id="get-region" action="./get-region.html" method="post">
 				<h2>Get a Specific Region</h2>
-				<p><label for="time-period">Select a time period</label></p>
-				<p><select name="time-period">
-					<option value="6-2013" selected>6-2013</option>
-				</select></p>
-				<p><label for="select-region">Select a region</label></p>
-				<p><select name="select-region">
-					<option value="">Select one...</option>
-					<optgroup label="England">
-						<option>East Midlands</option>
-						<option>East of England</option>
-						<option>London</option>
-						<option>North East</option>
-						<option>North West</option>
-						<option>South East</option>
-						<option>South West</option>
-						<option>West Midlands</option>
-						<option>Yorkshire and Humber</option>
-					</optgroup>
-					<optgroup label="Wales">
-						<option>Wales</option>
-					</optgroup>
-					<optgroup label="National">
-						<option>British Transport Police</option>
-						<option>Action Fraud</option>
-					</optgroup>
-				</select></p>
+				<section class="six columns alpha">
+					<p><label for="time-period">Select a time period</label></p>
+					<p><select name="time-period">
+						<option value="6-2013" selected>6-2013</option>
+					</select></p>
+				</section>
+				<section class="six columns omega">
+					<p><label for="select-region">Select a region</label></p>
+					<p><select name="select-region">
+						<option value="">Select one...</option>
+						<optgroup label="England">
+							<option>East Midlands</option>
+							<option>East of England</option>
+							<option>London</option>
+							<option>North East</option>
+							<option>North West</option>
+							<option>South East</option>
+							<option>South West</option>
+							<option>West Midlands</option>
+							<option>Yorkshire and Humber</option>
+						</optgroup>
+						<optgroup label="Wales">
+							<option>Wales</option>
+						</optgroup>
+						<optgroup label="National">
+							<option>British Transport Police</option>
+							<option>Action Fraud</option>
+						</optgroup>
+					</select></p>
+				</section>
 			</form>
-			<div id="bar" class="six columns row" style="height: 500px; display: none;"></div>
-			<div id="pie" class="six columns row" stype="height: 500px; display: none;"></div>
+			<section class="chart twelve colums alpha omega row" style="display: none;">
+				<h3>Bar Chart</h3>
+				<canvas id="bar" height="300" width="700"></canvas>
+			</section>
+			<section class="chart twelve columns alpha omega row" style="display: none;">
+				<h3>Pie Chart</h3>
+				<canvas id="pie" height="400" width="700"></canvas>
+			</section>
 		</article>
 
 
@@ -85,6 +95,13 @@
 			<h3>POST</h3>
 
 			<h3>DELETE</h3>
+
+			<section class="chart key" style="display: none;">
+				<h3>Chart Key</h3>
+				<ul>
+
+				</ul>
+			</section>
 		</aside>
 
 		<!-- Footer -->

@@ -19,6 +19,7 @@ $regions = uwe\atwd\region::get('all');
 // Switch through the response formats
 switch(uwe\atwd\uri::get('response'))
 {
+	// Build the XML response object
 	case 'xml':
 	default:
 		header('Content-type: text/xml');
@@ -66,9 +67,11 @@ switch(uwe\atwd\uri::get('response'))
 		$node->setAttribute('total', $regions['wales']->getTotalCrime(true));
 		$crimes->appendChild($node);
 
+		// Echo out the XML
 		echo $dom->saveXML();
 		break;
 
+	// Build the JSON response object
 	case 'json':
 		header('Content-type: application/json');
 		$json['response']['timestamp'] = time();
@@ -108,6 +111,8 @@ switch(uwe\atwd\uri::get('response'))
 		$json['response']['crimes']['england']['total'] = $england;
 		$json['response']['crimes']['wales']['total'] = $regions['wales']->getTotalCrime(true);
 
+		// Echo out the JSON
 		echo json_encode($json);
+		break;
 }
 

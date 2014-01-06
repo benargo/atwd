@@ -1,5 +1,5 @@
 .chart {
-  display: none; }
+  display: none !important; }
 
 p.key {
   margin: 0;

@@ -1,5 +1,7 @@
 # Advanced Topics in Web Development
 
+[[Assignment Specification](http://www.cems.uwe.ac.uk/~p-chatterjee/modules/atwd/assignment/ATWD_Assignment_2013-14.html)]
+
 ## Accessing the Assignment
 
 1. **Data Conversion and Schema:** [http://www.cems.uwe.ac.uk/~b2-argo/atwd/data/upload](http://www.cems.uwe.ac.uk/~b2-argo/atwd/data/upload)

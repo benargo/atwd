@@ -1,5 +1,14 @@
 # Advanced Topics in Web Development
 
+## Accessing the Assignment
+
+1. **Data Conversion and Schema:** [http://www.cems.uwe.ac.uk/~b2-argo/atwd/data/upload](http://www.cems.uwe.ac.uk/~b2-argo/atwd/data/upload)
+2. **REST Service:** Published at specified URLs
+3. **Client Side Processing and Visualization:** [http://www.cems.uwe.ac.uk/~b2-argo/atwd/client](http://www.cems.uwe.ac.uk/~b2-argo/atwd/client/index.html)
+4. **Documentation:** [http://www.cems.uwe.ac.uk/~b2-argo/atwd/crimes/doc/index.html](http://www.cems.uwe.ac.uk/~b2-argo/atwd/crimes/doc/index.html)
+
+## Learning Outcomes & Problems Encountered
+
 Instead of using a heavy MySQL database for storing custom data produced by the API, I opted instead for storing the data in XML files on the file system. These files can still be queried based on subdirectories (representing tables and then sorting by keys) and file names (representing IDs). For example, the custom area of "Wessex" in the "South West" region will be stored in `/data/custom/areas/south_west/wessex.xml`. I felt this the most appropriate solution for handling small amounts of custom data given the available technologies on UWE's web server. This method of storing data in the file system and having the API parse the XML was suitably fast for this application. If server side caching was to be taken further, I would investigate using PHP's [Serialise](http://www.php.net/manual/en/function.serialize.php) function to store the data as a PHP object. 
 
 The first problem encountered was with converting the supplied Excel spreadsheet to CSV. The Excel sheet contains a lot of excess rows, which all had to be stripped out. The data also contained a large number of totals, which also had to be removed. The conversion had to be hard coded for this specific format, as a traditional header based solution and then looping through each of the columns would not have worked. In all, the supplied data was a mess and it took a great deal more than anticipated to convert it to XML. The downside of this meant that if the CSV is changed and formatted differently in a previous update, the application would not be able to handle the conversion. The overall feeling of this process was that I've managed to make a meal out of garbage, but if the garbage was slightly different a meal would be impossible.
@@ -9,7 +18,6 @@ The second problem I encountered was differences in formatting data. XML has bot
 Finally, an issue with client side caching arose, as per the assignment brief the timestamp returned by the API is the current UNIX timestamp. This means that the data effectively updates itself every second as the timestamp changes, even though the data itself can remain the same. This meant that the AJAX's request to the API would always return as HTTP 200 (OK), rather than 304 (Not Modified), making local caching impossible. That said, I was able to store the data in local storage and, should the AJAX request return a 304 then it will use the locally stored data.
 
 To conclude, this assignment was fairly straight forward for me. That being said, this is the first time I've made an API, and the first major time I've produced XML and JSON as the result being echoed by PHP. It's a shame that the brief was asking for PUT/POST/DELETE requests which were really GET requests performing CRUD (Create, Read, Update & Delete) operations, I would have preferred to utilise the HTTP methods correctly. Nonetheless it works.
-
 
 ## Source Code
 

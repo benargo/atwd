@@ -18,7 +18,7 @@ BrowserMatch bMSIE !no-gzip !gzip-only-text/html
 	RewriteRule ^data(\/)?$ data/upload [R]
 
 	# PHP Source Files
-	RewriteRule ^(.*)\.phps$ ../resources/source.php?file=atwd/$1 [L]
+	RewriteRule ^(.*)\.phps$ ../resources/source.php?file=atwd/$1.php [L]
 
 	# 1. Data Conversion and Schema
 	RewriteCond %{REQUEST_METHOD} GET
@@ -46,5 +46,5 @@ BrowserMatch bMSIE !no-gzip !gzip-only-text/html
 	RewriteRule ^crimes/([\-\d]+)/(.*) api/catch_all.php [L,QSA]
 
 	# 5. Documentation
-	RewriteRule ^crimes/doc(/index.html)?$ docs/readme.html [L]
+	RewriteRule ^crimes/doc(/)?(index.html)?$ docs/readme.html [L]
 </IfModule>

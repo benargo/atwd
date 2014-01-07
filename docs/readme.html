@@ -11,13 +11,12 @@
 	<meta name="author" content="10008548">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<meta name="generator" content="Mou"><!-- http://mouapp.com/ -->
-	<base href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/">
 
 	<!-- CSS -->
 	<!-- http://www.getskeleton.com/ -->
-	<link rel="stylesheet" href="media/css/base.css">
-	<link rel="stylesheet" href="media/css/skeleton.css">
-	<link rel="stylesheet" href="media/css/layout.css">
+	<link rel="stylesheet" href="/~b2-argo/atwd/media/css/base.css">
+	<link rel="stylesheet" href="/~b2-argo/atwd/media/css/skeleton.css">
+	<link rel="stylesheet" href="/~b2-argo/atwd/media/css/layout.css">
 
 	<!--[if lt IE 9]>
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -27,6 +26,8 @@
 <body>
 
 	<div class="container">
+
+		<a name="top">
 		<header class="sixteen columns">
 			<h1 class="remove-bottom" style="margin-top: 40px">Documentation</h1>
 			<h5>Advanced Topics in Web Development</h5>
@@ -34,6 +35,37 @@
 		</header>
 
 		<article class="sixteen columns">
+
+			<section class="twelve columns alpha">
+
+				<a name="1"></a>
+				<h2>Accessing the Assignment</h2>
+				<ol>
+					<li><strong>Data Conversion and Schema</strong>: <a href="/~b2-argo/atwd/data/upload">http://www.cems.uwe.ac.uk/~b2-argo/atwd/data/upload</a></li>
+					<li><strong>REST Service</strong>: Published at specified URLs</li>
+					<li><strong>Client Side Processing and Visualization</strong>: <a href="/~b2-argo/atwd/client/index.html">http://www.cems.uwe.ac.uk/~b2-argo/atwd/client</a></li>
+					<li><strong>Documentation</strong>: <a href="/~b2-argo/atwd/crimes/doc/index.html">http://www.cems.uwe.ac.uk/~b2-argo/atwd/crimes/doc/index.html</a></li>
+				</ol>
+
+			</section>
+
+			<aside class="four columns omega">
+
+				<h3>Table of Contents</h3>
+
+				<ol>
+					<li><a href="#1">Accessing the Assignment</a></li>
+					<li><a href="#2">Learning Outcomes &amp; Problems Encountered</a></li>
+					<li><a href="#3">Source Code</a></li>
+				</ol>
+
+			</aside>
+
+			<hr class="clearfix" />
+
+			<a name="2"></a>
+			<h2>Learning Outcomes &amp; Problems Encountered</h2>
+
 			<p>Instead of using a heavy MySQL database for storing custom data produced by the API, I opted instead for storing the data in XML files on the file system. These files can still be queried based on subdirectories (representing tables and then sorting by keys) and file names (representing IDs). For example, the custom area of "Wessex" in the "South West" region will be stored in <code>/data/custom/areas/south_west/wessex.xml</code>. I felt this the most appropriate solution for handling small amounts of custom data given the available technologies on UWE's web server. This method of storing data in the file system and having the API parse the XML was suitably fast for this application. If server side caching was to be taken further, I would investigate using PHP's <a href="http://www.php.net/manual/en/function.serialize.php">Serialise</a> function to store the data as a PHP object.</p>
 
 			<p>The first problem encountered was with converting the supplied Excel spreadsheet to CSV. The Excel sheet contains a lot of excess rows, which all had to be stripped out. The data also contained a large number of totals, which also had to be removed. The conversion had to be hard coded for this specific format, as a traditional header based solution and then looping through each of the columns would not have worked. In all, the supplied data was a mess and it took a great deal more than anticipated to convert it to XML. The downside of this meant that if the CSV is changed and formatted differently in a previous update, the application would not be able to handle the conversion. The overall feeling of this process was that I've managed to make a meal out of garbage, but if the garbage was slightly different a meal would be impossible.</p>
@@ -46,112 +78,124 @@
 
 			<hr>
 
+			<a name="3"></a>
 			<h2>Source Code</h2>
 
 			<p>All code is hosted at <a href="https://github.com/benargo/atwd">Github</a> with backups on UWE's web server.</p>
 
-			<h3>1. Data Conversion and Schema</h3>
+			<section class="eight columns alpha">
 
-			<ol>
-				<li><a href="https://github.com/benargo/atwd/blob/master/data/recorded_crime.csv">Input CSV File</a> (<a href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/data/recorded_crime.csv">Download</a>)</li>
-				<li><a href="https://github.com/benargo/atwd/blob/master/data/upload.get.php">Upload Form</a> (<a href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/data/upload.get.phps">Backup</a>)</li>
-				<li><a href="https://github.com/benargo/atwd/blob/master/data/upload.post.php">POST CSV Processor</a> (<a href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/data/upload.post.phps">Backup</a>)</li>
-				<li><a href="https://github.com/benargo/atwd/blob/master/data/recorded_crime.xml">Generated XML File</a> (<a href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/data/recorded_crime.xml">Backup</a>)</li>
-				<li><a href="https://github.com/benargo/atwd/blob/master/data/recorded_crime.xsd">XSD Schema</a> (<a href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/data/recorded_crime.xsd">Backup</a>)</li>
-				<li><a href="https://github.com/benargo/atwd/blob/master/data/custom_areas.template.xml">Custom Areas template</a> (<a href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/data/custom_areas.template.xml">Backup</a>)</li>
-			</ol>
+				<h3>1. Data Conversion and Schema</h3>
 
-			<h3>2. RESTful Service</h3>
+				<ol>
+					<li><a href="https://github.com/benargo/atwd/blob/master/data/recorded_crime.csv">Input CSV File</a> (<a href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/data/recorded_crime.csv">Download</a>)</li>
+					<li><a href="https://github.com/benargo/atwd/blob/master/data/upload.get.php">Upload Form</a> (<a href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/data/upload.get.phps">Backup</a>)</li>
+					<li><a href="https://github.com/benargo/atwd/blob/master/data/upload.post.php">POST CSV Processor</a> (<a href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/data/upload.post.phps">Backup</a>)</li>
+					<li><a href="https://github.com/benargo/atwd/blob/master/data/recorded_crime.xml">Generated XML File</a> (<a href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/data/recorded_crime.xml">Backup</a>)</li>
+					<li><a href="https://github.com/benargo/atwd/blob/master/data/recorded_crime.xsd">XSD Schema</a> (<a href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/data/recorded_crime.xsd">Backup</a>)</li>
+					<li><a href="https://github.com/benargo/atwd/blob/master/data/custom_areas.template.xml">Custom Areas template</a> (<a href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/data/custom_areas.template.xml">Backup</a>)</li>
+				</ol>
 
-			<ol>
-			<li><a href="https://github.com/benargo/atwd/blob/master/api/autoload.php">Autoloader</a> (<a href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/api/autoload.phps">Backup</a>)</li>
-			<li>Classes
+				<h3>2. RESTful Service</h3>
 
-			<ol>
-			<li><a href="https://github.com/benargo/atwd/blob/master/api/classes/area.php">Area</a> (<a href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/api/classes/area.phps">Backup</a>)</li>
-			<li><a href="https://github.com/benargo/atwd/blob/master/api/classes/error.php">Error</a> (<a href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/api/classes/error.phps">Backup</a>)</li>
-			<li><a href="https://github.com/benargo/atwd/blob/master/api/classes/region.php">Region</a> (<a href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/api/classes/region.phps">Backup</a>)</li>
-			<li><a href="https://github.com/benargo/atwd/blob/1cc57d96595644c8633cdc87f2ad3b7f7d5a1570/api/classes/response.php">Response</a> (File removed from final version)</li>
-			<li><a href="https://github.com/benargo/atwd/blob/master/api/classes/SimpleXMLIterator.php">SimpleXMLIterator</a> (<a href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/api/classes/SimpleXMLIterator.phps">Backup</a>)</li>
-			<li><a href="https://github.com/benargo/atwd/blob/master/api/classes/uri.php">URI</a> (<a href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/api/classes/uri.phps">Backup</a>)</li>
-			</ol>
-			</li>
-			<li>Functions
+				<ol>
+				<li><a href="https://github.com/benargo/atwd/blob/master/api/autoload.php">Autoloader</a> (<a href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/api/autoload.phps">Backup</a>)</li>
+				<li>Classes
 
-			<ol>
-			<li><a href="https://github.com/benargo/atwd/blob/master/api/functions/dump.php">dump()</a> (<a href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/api/functions/dump.phps">Backup</a>)</li>
-			<li><a href="https://github.com/benargo/atwd/blob/master/api/functions/fatal_error.php">fatal_error()</a> (<a href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/api/functions/fatal_error.phps">Backup</a>)</li>
-			<li><a href="https://github.com/benargo/atwd/blob/25b03e2e10ed4d59ebe7022c20335c10adc4dc4c/api/functions/get_file.php">get_file()</a> (File removed from final version)</li>
-			</ol>
-			</li>
-			<li>RESTful Pages
+				<ol>
+				<li><a href="https://github.com/benargo/atwd/blob/master/api/classes/area.php">Area</a> (<a href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/api/classes/area.phps">Backup</a>)</li>
+				<li><a href="https://github.com/benargo/atwd/blob/master/api/classes/error.php">Error</a> (<a href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/api/classes/error.phps">Backup</a>)</li>
+				<li><a href="https://github.com/benargo/atwd/blob/master/api/classes/region.php">Region</a> (<a href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/api/classes/region.phps">Backup</a>)</li>
+				<li><a href="https://github.com/benargo/atwd/blob/1cc57d96595644c8633cdc87f2ad3b7f7d5a1570/api/classes/response.php">Response</a> (File removed from final version)</li>
+				<li><a href="https://github.com/benargo/atwd/blob/master/api/classes/SimpleXMLIterator.php">SimpleXMLIterator</a> (<a href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/api/classes/SimpleXMLIterator.phps">Backup</a>)</li>
+				<li><a href="https://github.com/benargo/atwd/blob/master/api/classes/uri.php">URI</a> (<a href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/api/classes/uri.phps">Backup</a>)</li>
+				</ol>
+				</li>
+				<li>Functions
 
-			<ol>
-			<li><a href="https://github.com/benargo/atwd/blob/master/api/getAll.php">GET all regions</a> (<a href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/api/getAll.phps">Backup</a>)</li>
-			<li><a href="https://github.com/benargo/atwd/blob/master/api/get.php">GET specific region</a> (<a href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/api/get.phps">Backup</a>)</li>
-			<li><a href="https://github.com/benargo/atwd/blob/master/api/put.php">PUT (update) total</a> (<a href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/api/put.phps">Backup</a>)</li>
-			<li><a href="https://github.com/benargo/atwd/blob/master/api/post.php">POST (create) new area</a> (<a href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/api/post.phps">Backup</a>)</li>
-			<li><a href="https://github.com/benargo/atwd/blob/master/api/delete.php">DELETE custom area</a> (<a href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/api/delete.phps">Backup</a>)</li>
-			<li><a href="https://github.com/benargo/atwd/blob/master/api/catch_all.php">Catch for unmapped requests</a> (<a href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/api/catch_all.phps">Backup</a>)</li>
-			</ol>
-			</li>
-			</ol>
+				<ol>
+				<li><a href="https://github.com/benargo/atwd/blob/master/api/functions/dump.php">dump()</a> (<a href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/api/functions/dump.phps">Backup</a>)</li>
+				<li><a href="https://github.com/benargo/atwd/blob/master/api/functions/fatal_error.php">fatal_error()</a> (<a href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/api/functions/fatal_error.phps">Backup</a>)</li>
+				<li><a href="https://github.com/benargo/atwd/blob/25b03e2e10ed4d59ebe7022c20335c10adc4dc4c/api/functions/get_file.php">get_file()</a> (File removed from final version)</li>
+				</ol>
+				</li>
+				<li>RESTful Pages
+
+				<ol>
+				<li><a href="https://github.com/benargo/atwd/blob/master/api/getAll.php">GET all regions</a> (<a href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/api/getAll.phps">Backup</a>)</li>
+				<li><a href="https://github.com/benargo/atwd/blob/master/api/get.php">GET specific region</a> (<a href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/api/get.phps">Backup</a>)</li>
+				<li><a href="https://github.com/benargo/atwd/blob/master/api/put.php">PUT (update) total</a> (<a href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/api/put.phps">Backup</a>)</li>
+				<li><a href="https://github.com/benargo/atwd/blob/master/api/post.php">POST (create) new area</a> (<a href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/api/post.phps">Backup</a>)</li>
+				<li><a href="https://github.com/benargo/atwd/blob/master/api/delete.php">DELETE custom area</a> (<a href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/api/delete.phps">Backup</a>)</li>
+				<li><a href="https://github.com/benargo/atwd/blob/master/api/catch_all.php">Catch for unmapped requests</a> (<a href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/api/catch_all.phps">Backup</a>)</li>
+				</ol>
+				</li>
+				</ol>
+
+			</section>
+
+			<section class="six columns omega">
+
+				<h3>3. Client Side Processing &amp; Visualization</h3>
+
+				<ol>
+				<li><a href="https://github.com/benargo/atwd/blob/master/client/index.html">Index page</a> (<a href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/client/">Backup</a>)</li>
+				<li><a href="https://github.com/benargo/atwd/blob/master/client/get-region.html">Get a specific region</a> (<a href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/client/get-region.html">Backup</a>)</li>
+				</ol>
 
 
-			<h3>3. Client Side Processing &amp; Visualization</h3>
+				<h3>4. CSS, JavaScript and Images</h3>
 
-			<ol>
-			<li><a href="https://github.com/benargo/atwd/blob/master/client/index.html">Index page</a> (<a href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/client/">Backup</a>)</li>
-			<li><a href="https://github.com/benargo/atwd/blob/master/client/get-region.html">Get a specific region</a> (<a href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/client/get-region.html">Backup</a>)</li>
-			</ol>
+				<ol>
+				<li>CSS
 
+				<ol>
+				<li><a href="https://github.com/benargo/atwd/blob/master/media/css/base.css">base.css</a> (<a href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/media/css/base.css">Backup</a>)</li>
+				<li><a href="https://github.com/benargo/atwd/blob/master/media/css/custom.scss">custom.scss</a> (<a href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/media/css/custom.scss">Backup</a>)</li>
+				<li><a href="https://github.com/benargo/atwd/blob/master/media/css/layout.css">layout.css</a> (<a href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/media/css/layout.css">Backup</a>)</li>
+				<li><a href="https://github.com/benargo/atwd/blob/master/media/css/skeleton.css">skeleton.css</a> (<a href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/media/css/skeleton.css">Backup</a>)</li>
+				</ol>
+				</li>
+				<li>JavaScript
 
-			<h3>4. CSS, JavaScript and Images</h3>
+				<ol>
+				<li><a href="https://github.com/benargo/atwd/blob/master/media/js/data-upload.js">Data Upload</a> (<a href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/media/js/data-upload.js">Backup</a>)</li>
+				<li><a href="https://github.com/benargo/atwd/blob/master/media/js/chart.js">Chart.js Library</a> (<a href="www.cems.uwe.ac.uk/~b2-argo/atwd/media/js/chart.js">Backup</a>)</li>
+				<li><a href="https://github.com/benargo/atwd/blob/master/media/js/client.js">Client Processing</a> (<a href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/media/js/client.js">Backup</a>)</li>
+				</ol>
+				</li>
+				<li>Images
 
-			<ol>
-			<li>CSS
+				<ol>
+				<li><a href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/media/images/home_office.75px.png">Home Office logo</a> (&copy; 2013 Crown Copyright)</li>
+				<li><a href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/media/images/uwe.75px.png">UWE logo</a> (&copy; 2013 University of the West of England, Bristol)</li>
+				</ol>
+				</li>
+				</ol>
 
-			<ol>
-			<li><a href="https://github.com/benargo/atwd/blob/master/media/css/base.css">base.css</a> (<a href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/media/css/base.css">Backup</a>)</li>
-			<li><a href="https://github.com/benargo/atwd/blob/master/media/css/custom.scss">custom.scss</a> (<a href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/media/css/custom.scss">Backup</a>)</li>
-			<li><a href="https://github.com/benargo/atwd/blob/master/media/css/layout.css">layout.css</a> (<a href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/media/css/layout.css">Backup</a>)</li>
-			<li><a href="https://github.com/benargo/atwd/blob/master/media/css/skeleton.css">skeleton.css</a> (<a href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/media/css/skeleton.css">Backup</a>)</li>
-			</ol>
-			</li>
-			<li>JavaScript
+				<h3>5. Other Files</h3>
 
-			<ol>
-			<li><a href="https://github.com/benargo/atwd/blob/master/media/js/data-upload.js">Data Upload</a> (<a href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/media/js/data-upload.js">Backup</a>)</li>
-			<li><a href="https://github.com/benargo/atwd/blob/master/media/js/chart.js">Chart.js Library</a> (<a href="www.cems.uwe.ac.uk/~b2-argo/atwd/media/js/chart.js">Backup</a>)</li>
-			<li><a href="https://github.com/benargo/atwd/blob/master/media/js/client.js">Client Processing</a> (<a href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/media/js/client.js">Backup</a>)</li>
-			</ol>
-			</li>
-			<li>Images
+				<ol>
+				<li><a href="https://github.com/benargo/atwd/blob/master/.htaccess">.htaccess</a></li>
+				</ol>
 
-			<ol>
-			<li><a href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/media/images/home_office.75px.png">Home Office logo</a> (&copy; 2013 Crown Copyright)</li>
-			<li><a href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/media/images/uwe.75px.png">UWE logo</a> (&copy; 2013 University of the West of England, Bristol)</li>
-			</ol>
-			</li>
-			</ol>
+			</section>
 
-			<h3>5. Other Files</h3>
+			<hr class="clearfix">
 
-			<ol>
-			<li><a href="https://github.com/benargo/atwd/blob/master/.htaccess">.htaccess</a></li>
-			</ol>
+			<p style="text-align: center"><a href="#top">Back to Top</a></p>
+
 		</article>
 
 		<!-- Footer -->
-		<hr>
 		<div class="sixteen columns clearfix">
 			<p>Copyright &copy; 2013-14 University of the West of England, Bristol. Assignment by 10008548.</p>
 		</div>
-		<div class="one-third column clearfix">
-			<a href="http://www.uwe.ac.uk/" target="_blank" rel="nofollow"><img src="../media/images/uwe.75px.png" alt="UWE Logo"></a>
+		<div class="one-third column clearfix row">
+			<a href="http://www.uwe.ac.uk/" target="_blank" rel="nofollow"><img src="/~b2-argo/atwd/media/images/uwe.75px.png" alt="UWE Logo"></a>
 		</div>
 		<div class="one-third column">
-			<a href="https://www.gov.uk/government/organisations/home-office" target="_blank" rel="nofollow"><img src="../media/images/home_office.75px.png" alt="Home Office Logo"></a>
+			<a href="https://www.gov.uk/government/organisations/home-office" target="_blank" rel="nofollow"><img src="/~b2-argo/atwd/media/images/home_office.75px.png" alt="Home Office Logo"></a>
 		</div>
 	</div><!-- container -->
 </body>

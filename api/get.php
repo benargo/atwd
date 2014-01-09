@@ -49,14 +49,14 @@ if($region)
 			$dom_crimes = $dom_response->appendChild($node);
 
 			$node = $dom->createElement('region');
-			$node->setAttribute('id', ucwords($region->name));
+			$node->setAttribute('id', $region->name);
 			$node->setAttribute('total', $region->getTotalCrime(true));
 			$dom_region = $dom_crimes->appendChild($node);
 			
 			foreach($region->getAreas() as $area)
 			{
 				$node = $dom->createElement('area');
-				$node->setAttribute('id', ucwords($area->name));
+				$node->setAttribute('id', $area->name);
 				$node->setAttribute('total', $area->getTotalCrime(true));
 				$dom_region->appendChild($node); 
 			}

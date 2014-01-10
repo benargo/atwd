@@ -45,9 +45,10 @@ BrowserMatch bMSIE !no-gzip !gzip-only-text/html
 	RewriteCond %{REQUEST_METHOD} GET
 	RewriteRule ^crimes/([\-\d]+)/delete/(\w+)/(xml|json)$ api/delete.php?year=$1&area=$2&response=$3 [L,QSA]
 
-	RewriteRule ^crimes/([\-\d]+)/(.*) api/catch_all.php [L,QSA]
-
 	# 5. Documentation
 	RewriteRule ^crimes/doc(/)?(index.html)?$ docs/readme.html [L]
+
+	# Catch all
+	RewriteRule ^crimes/.*/.* api/catch_all.php [L,QSA]
 </IfModule>
 

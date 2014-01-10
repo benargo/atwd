@@ -5,6 +5,8 @@ php_flag log_errors on
 php_flag display_errors 1
 php_value error_log logs/error.log
 
+ErrorDocument 404 /~b2-argo/atwd/api/catch_all.php
+
 # Compression
 AddOutputFilterByType DEFLATE text/html text/plain text/xml application/xml application/xhtml+xml text/javascript text/css application/x-javascript
 BrowserMatch ^Mozilla/4 gzip-only-text/html
@@ -49,3 +51,4 @@ BrowserMatch bMSIE !no-gzip !gzip-only-text/html
 	# Catch all
 	RewriteRule ^crimes/.*/.* api/catch_all.php [L,QSA]
 </IfModule>
+

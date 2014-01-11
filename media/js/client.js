@@ -1,9 +1,9 @@
 // Colors picked with thanks to Adobe Kuler
 // https://kuler.adobe.com/Chart-Colors-1-color-theme-3358355/
+// https://kuler.adobe.com/Chart-Colors-2-color-theme-3358625/
 var chartColors = ['#6CD5FF', '#6EE862', '#FFE078', '#E87662', '#BB78FF', '#514DFF', '#46E8BA', '#E2FF59', '#E89F46', '#FF59B8'];
 
 $(function(){
-
 	$('#get-region select[name="select-region"]').change(function() {
 		var time_period = $('#get-region select[name="time-period"]').val();
 		var region_name = $(this).val().replace(/ /g,'_').toLowerCase();

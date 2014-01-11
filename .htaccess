@@ -15,7 +15,7 @@ BrowserMatch bMSIE !no-gzip !gzip-only-text/html
 
 <IfModule mod_rewrite.c>
 	RewriteEngine On
-	#RewriteBase /~b2-argo/atwd/
+	RewriteBase /~b2-argo/atwd/
 
 	RewriteRule ^data(\/)?$ data/upload [R]
 
@@ -49,7 +49,7 @@ BrowserMatch bMSIE !no-gzip !gzip-only-text/html
 	RewriteRule ^crimes/doc(/)?(index.html)?$ docs/readme.html [L]
 
 	# 6. Unit Testing
-	RewriteRule ^test/([a-z0-9\-])$ test/test.php?username=$1 [L]
+	RewriteRule ^test/xsd/(.*)$ test/xsd.php?url=$1 [L]
 
 	# Catch all
 	RewriteRule ^crimes/.*/.* api/catch_all.php [L,QSA]

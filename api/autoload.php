@@ -24,7 +24,7 @@ require_once('../../../global/cems_config.php');
 define('BASEDIR', $_CEMS_SERVER['DOCUMENT_ROOT'] .'public_html/atwd/');
 
 // 3. Helpful Functions
-foreach(scandir('./functions/') as $file)
+foreach(scandir(BASEDIR.'api/functions/') as $file)
 {
 	if(is_dir($file))
 	{
@@ -32,7 +32,7 @@ foreach(scandir('./functions/') as $file)
 	}
 	if(substr($file, -4) == '.php')
 	{
-		require_once('./functions/'. $file);	
+		require_once(BASEDIR.'api/functions/'. $file);	
 	}
 }
 

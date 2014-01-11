@@ -255,6 +255,16 @@
 					test_url(url);
 				});
 
+				// Log the results
+				$.ajax(
+				{
+					type: 'POST',
+					data: {
+						username: username
+					},
+					url: '/~b2-argo/atwd/test/ajax_log.php'
+				});
+
 				$('#response').append('<p style="text-align: center; border: none;"><a href="#top">Scroll to Top</a></p>');
 				
 			});

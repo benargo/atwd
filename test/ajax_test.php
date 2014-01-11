@@ -1,6 +1,4 @@
 <?php
-	//require_once('../api/autoload.php');
-
 	error_reporting(0);
 
 	// Shorthand :)

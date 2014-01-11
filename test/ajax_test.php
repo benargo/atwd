@@ -19,23 +19,23 @@
 		// Determine the request type
 		switch($url) 
 		{
-			case (preg_match('/^crimes\/([\-\d]+)\/(xml|json)$/', $url)):
+			case (preg_match('/^crimes\/([\-\d]+)\/(xml|json)$/', $url) ? true : false):
 				$request = 'get_all';
 				break;
 
-			case (preg_match('/^crimes\/([\-\d]+)\/(\w+)\/(xml|json)$/', $url)):
+			case (preg_match('/^crimes\/([\-\d]+)\/(\w+)\/(xml|json)$/', $url) ? true : false):
 				$request = 'get_region';
 				break;
 
-			case (preg_match('/^crimes\/([\-\d]+)\/put\/(\w+):(\d+)\/(xml|json)$/', $url)):
+			case (preg_match('/^crimes\/([\-\d]+)\/put\/(\w+):(\d+)\/(xml|json)$/', $url) ? true : false):
 				$request = 'put';
 				break;
 
-			case (preg_match('/^crimes\/([\-\d]+)\/post\/(\w+)\/(\w+)\/([\w\-\:]+)\/(xml|json)$/', $url)):
+			case (preg_match('/^crimes\/([\-\d]+)\/post\/(\w+)\/(\w+)\/([\w\-\:]+)\/(xml|json)$/', $url) ? true : false):
 				$request = 'post';
 				break;
 
-			case (preg_match('/^crimes\/([\-\d]+)\/delete\/(\w+)\/(xml|json)$/', $url)):
+			case (preg_match('/^crimes\/([\-\d]+)\/delete\/(\w+)\/(xml|json)$/', $url) ? true : false):
 				$request = 'delete';
 				break;
 		}
@@ -52,6 +52,8 @@
 				$dom->loadXML($api);
 
 				$response['file_loaded'] = true;
+
+				echo $request;
 
 				// Validate the response
 				if($dom->schemaValidate(__DIR__.'/xsd/'. $request .'.xsd'))

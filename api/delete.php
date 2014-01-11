@@ -16,6 +16,7 @@ switch(uwe\atwd\uri::get('year'))
 
 $region = false;
 $area = false;
+$areas = array();
 
 $iterator = new RecursiveDirectoryIterator(BASEDIR.'data/custom/areas');
 foreach (new RecursiveIteratorIterator($iterator) as $filename => $file) 
@@ -26,14 +27,15 @@ foreach (new RecursiveIteratorIterator($iterator) as $filename => $file)
 		$xml = simplexml_load_file($filename);
 		$region = new uwe\atwd\region($path[0]);
 		$area = new uwe\atwd\area($xml->region->area);
+		$areas[] = $area;
+		
+		$region->deleteArea($area->id);
+		unlink(BASEDIR .'data/custom/areas/'. $region->id .'/'. $area->id .'.xml');
 	}
 }
 
 if($region && $area)
 {
-	$region->deleteArea($area->id);
-	unlink(BASEDIR .'data/custom/areas/'. $region->id .'/'. $area->id .'.xml');
-
 	// Switch through the response formats
 	switch(uwe\atwd\uri::get('response'))
 	{
@@ -53,7 +55,14 @@ if($region && $area)
 
 			$node = $dom->createElement('area');
 			$node->setAttribute('id', $area->id);
-			$node->setAttribute('deleted', $area->getTotalCrime(true));
+
+			$total_crime = 0;
+			foreach($areas as $area)
+			{
+				$total_crime += $area->getTotalCrime(true);
+			}
+
+			$node->setAttribute('deleted', $total_crime);
 			$dom_area = $dom_crimes->appendChild($node);
 
 			foreach($area->iterate() as $key => $value)

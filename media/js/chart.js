@@ -1283,6 +1283,9 @@ window.Chart = function(context){
 	function calculateScale(drawingHeight,maxSteps,minSteps,maxValue,minValue,labelTemplateString){
 			var graphMin,graphMax,graphRange,stepValue,numberOfSteps,valueRange,rangeOrderOfMagnitude,decimalNum;
 			
+      // Always start y-axis at 0.
+      minValue = 0;
+
 			valueRange = maxValue - minValue;
 			
 			rangeOrderOfMagnitude = calculateOrderOfMagnitude(valueRange);

@@ -5,7 +5,9 @@ php_flag log_errors on
 php_flag display_errors 1
 php_value error_log logs/error.log
 
-ErrorDocument 404 /~b2-argo/atwd/api/catch_all.php
+<FilesMatch "\/crimes\/">
+	ErrorDocument 404 /~b2-argo/atwd/api/catch_all.php
+</FilesMatch>
 
 # Compression
 AddOutputFilterByType DEFLATE text/html text/plain text/xml application/xml application/xhtml+xml text/javascript text/css application/x-javascript
@@ -47,9 +49,6 @@ BrowserMatch bMSIE !no-gzip !gzip-only-text/html
 
 	# 5. Documentation
 	RewriteRule ^crimes/doc(/)?(index.html)?$ docs/readme.html [L]
-
-	# 6. Unit Testing
-	RewriteRule ^test/xsd/(.*)$ test/xsd.php?url=$1 [L]
 
 	# Catch all
 	RewriteRule ^crimes/.*/.* api/catch_all.php [L,QSA]

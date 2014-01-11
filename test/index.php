@@ -19,7 +19,12 @@
 	<link rel="stylesheet" href="../media/css/layout.css">
 	<style type="text/css">
 	input { display: inline-block !important; }
-	p.success:before { content: "\2713 "; color: #51e853; font-weight: bold; }
+	#response p { border: solid 5px; border-radius: 3px; -webkit-border-radius: 3px; padding: 5px; }
+	#response p.error { border-color: #ff0200; }
+	#response p.warning { border-color: #ff9900; }
+	#response p.success { border-color: #00b224; }
+	strong.error { color: #ff0200; }
+	strong.warning { color: #ff9900; }
 	</style>
 
 	<!--[if lt IE 9]>
@@ -28,66 +33,118 @@
 
 	<!-- JavaScript -->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-
-</head>
-<body>
-
-	<div class="container">
-
-		<header class="sixteen columns">
-			<h1 class="remove-bottom" style="margin-top: 40px">API Test Script</h1>
-			<h5>Advanced Topics in Web Development</h5>
-			<hr />
-		</header>
-
-		<article class="sixteen columns">
-
-			<p>This script tests a users API for the Advanced Topics in Web Development module to ensure everything works correctly.</p>
-
-
-			<form id="test-form" action="./" method="get">
-				<p><label for="username">To start, fill in your username below:</label></p>
-				<p><input type="text" name="username" placeholder="b2-argo" /> <input type="submit" value="Go" /></p>
-			</form>
-
-			<section id="response" style="display: none;">
-				<h2>Result</h2>
-			</section>
-
-			<script type="text/javascript"><!--
+	<script type="text/javascript"><!--
+		$(function()
+		{
 			$('#test-form').submit(function(event)
 			{
 				event.preventDefault();
+				if(typeof event.originalEvent === 'undefined')
+				{
+					event.preventDefault();
+				}
 				var username = $('input[name="username"]').val().toLowerCase();
 				var base = 'http://www.cems.uwe.ac.uk/~'+ username +'/atwd/crimes';
 				var response = $('#response');
-				var test_urls = [
-					'/6-2013/xml', 
-					'/6-2013/json',
-					'/6-2013/east_of_england/xml',
-					'/6-2013/east_of_england/json',
-					'/6-2013/east_midlands/xml',
-					'/6-2013/east_midlands/json',
-					'/6-2013/london/xml',
-					'/6-2013/london/json',
-					'/6-2013/north_east/xml',
-					'/6-2013/north_east/json',
-					'/6-2013/north_west/xml',
-					'/6-2013/north_west/json',
-					'/6-2013/south_east/xml',
-					'/6-2013/south_east/json',
-					'/6-2013/south_west/xml',
-					'/6-2013/south_west/json',
-					'/6-2013/west_midlands/xml',
-					'/6-2013/west_midlands/json',
-					'/6-2013/yorkshire_and_humber/xml',
-					'/6-2013/yorkshire_and_humber/json',
-					'/6-2013/wales/xml',
-					'/6-2013/wales/json',
-					'/6-2013/british_transport_police/xml',
-					'/6-2013/british_transport_police/json',
-					'/6-2013/action_fraud/xml',
-					'/6-2013/action_fraud/json',
+				// GET All
+				var get_all_urls = [
+						
+						'/6-2013/xml', 
+						'/6-2013/json'
+				];
+
+				// GET Specific Region
+				var get_region_urls = [
+	
+						'/6-2013/east_of_england/xml',
+						'/6-2013/east_of_england/json',
+						'/6-2013/east_midlands/xml',
+						'/6-2013/east_midlands/json',
+						'/6-2013/london/xml',
+						'/6-2013/london/json',
+						'/6-2013/north_east/xml',
+						'/6-2013/north_east/json',
+						'/6-2013/north_west/xml',
+						'/6-2013/north_west/json',
+						'/6-2013/south_east/xml',
+						'/6-2013/south_east/json',
+						'/6-2013/south_west/xml',
+						'/6-2013/south_west/json',
+						'/6-2013/west_midlands/xml',
+						'/6-2013/west_midlands/json',
+						'/6-2013/yorkshire_and_humber/xml',
+						'/6-2013/yorkshire_and_humber/json',
+						'/6-2013/wales/xml',
+						'/6-2013/wales/json',
+						'/6-2013/british_transport_police/xml',
+						'/6-2013/british_transport_police/json',
+						'/6-2013/action_fraud/xml',
+						'/6-2013/action_fraud/json'
+				];
+
+				// PUT
+				var put_urls = [	
+
+					'/6-2013/put/east_of_england:51970/xml',
+					'/6-2013/put/east_of_england:51970/json',
+					'/6-2013/put/east_midlands:51970/xml',
+					'/6-2013/put/east_midlands:51970/json',
+					'/6-2013/put/london:51970/xml',
+					'/6-2013/put/london:51970/json',
+					'/6-2013/put/north_east:51970/xml',
+					'/6-2013/put/north_east:51970/json',
+					'/6-2013/put/north_west:51970/xml',
+					'/6-2013/put/north_west:51970/json',
+					'/6-2013/put/south_east:51970/xml',
+					'/6-2013/put/south_east:51970/json',
+					'/6-2013/put/south_west:51970/xml',
+					'/6-2013/put/south_west:51970/json',
+					'/6-2013/put/west_midlands:51970/xml',
+					'/6-2013/put/west_midlands:51970/json',
+					'/6-2013/put/yorkshire_and_humber:51970/xml',
+					'/6-2013/put/yorkshire_and_humber:51970/json',
+					'/6-2013/put/wales:51970/xml',
+					'/6-2013/put/wales:51970/json',
+					'/6-2013/put/british_transport_police:51970/xml',
+					'/6-2013/put/british_transport_police:51970/json',
+					'/6-2013/put/action_fraud:51970/xml',
+					'/6-2013/put/action_fraud:51970/json'
+				];
+
+				// POST
+				var post_urls = [
+
+					'/6-2013/post/east_of_england/wessex/hom:4-vwi:15-vwoi:25/xml',
+					'/6-2013/post/east_of_england/wessex/hom:4-vwi:15-vwoi:25/json',
+					'/6-2013/post/east_midlands/wessex/hom:4-vwi:15-vwoi:25/xml',
+					'/6-2013/post/east_midlands/wessex/hom:4-vwi:15-vwoi:25/json',
+					'/6-2013/post/london/wessex/hom:4-vwi:15-vwoi:25/xml',
+					'/6-2013/post/london/wessex/hom:4-vwi:15-vwoi:25/json',
+					'/6-2013/post/north_east/wessex/hom:4-vwi:15-vwoi:25/xml',
+					'/6-2013/post/north_east/wessex/hom:4-vwi:15-vwoi:25/json',
+					'/6-2013/post/north_west/wessex/hom:4-vwi:15-vwoi:25/xml',
+					'/6-2013/post/north_west/wessex/hom:4-vwi:15-vwoi:25/json',
+					'/6-2013/post/south_east/wessex/hom:4-vwi:15-vwoi:25/xml',
+					'/6-2013/post/south_east/wessex/hom:4-vwi:15-vwoi:25/json',
+					'/6-2013/post/south_west/wessex/hom:4-vwi:15-vwoi:25/xml',
+					'/6-2013/post/south_west/wessex/hom:4-vwi:15-vwoi:25/json',
+					'/6-2013/post/west_midlands/wessex/hom:4-vwi:15-vwoi:25/xml',
+					'/6-2013/post/west_midlands/wessex/hom:4-vwi:15-vwoi:25/json',
+					'/6-2013/post/yorkshire_and_humber/wessex/hom:4-vwi:15-vwoi:25/xml',
+					'/6-2013/post/yorkshire_and_humber/wessex/hom:4-vwi:15-vwoi:25/json',
+					'/6-2013/post/wales/wessex/hom:4-vwi:15-vwoi:25/xml',
+					'/6-2013/post/wales/wessex/hom:4-vwi:15-vwoi:25/json',
+					'/6-2013/post/british_transport_police/wessex/hom:4-vwi:15-vwoi:25/xml',
+					'/6-2013/post/british_transport_police/wessex/hom:4-vwi:15-vwoi:25/json',
+					'/6-2013/post/action_fraud/wessex/hom:4-vwi:15-vwoi:25/xml',
+					'/6-2013/post/action_fraud/wessex/hom:4-vwi:15-vwoi:25/json'
+				];
+
+				// DELETE
+				var delete_urls = [
+
+					'/6-2013/delete/wessex/xml',
+					'/6-2013/delete/wessex/json'
 				];
 
 				function test_url(test_url)
@@ -104,42 +161,134 @@
 						{
 							404: function() 
 							{
-								response.append('<p class="error 404">'+ base + test_url +' (HTTP 404 Not Found)</p>');
+								response.append('<p class="error"><strong class="error">Unable to find document:</strong> <span class="url"><a href="'+ base + test_url +'">'+ base + test_url +'</a></url> (HTTP 404 Not Found)</p>');
 							},
 							500: function() 
 							{
-								response.append('<p class="error 500">'+ base + test_url +' (HTTP 500 Internal Server Error)</p>');
+								response.append('<p class="error"><strong class="error">Service Error:</strong> <span class="url"><a href="'+ base + test_url +'">'+ base + test_url +'</a></span> (HTTP 500 Internal Server Error)</p>');
 							},
 							501: function() 
 							{
-								response.append('<p class="error 501">'+ base + test_url +' (Error 501 URL pattern not recognized)</p>');
+								response.append('<p class="error"><strong class="error">URL pattern not recognized:</strong> <span class="url"><a href="'+ base + test_url +'">'+ base + test_url +'</a></span> (HTTP 501 Not Implemented)</p>');
 							}
 						},
-						success: function(data, status, xhr) 
+						success: function(data) 
 						{
-							switch(xhr.getResponseHeader("content-type"))
+							var status = 'success';
+							var string = '<p><strong>Document found:</strong> <span class="url"><a href="'+ base + test_url +'">'+ base + test_url +'</a></span> (HTTP 200 OK)<br />';
+							if(data.expected_type == data.response_type)
 							{
-
+								string += '<strong>Document content-type validated</strong> as '+ data.response_type +'<br />';
 							}
-							response.append('<p class="success">'+ base + test_url +' ()</p>');
-							
+							else
+							{
+								status = 'warning';
+								string += '<strong class="warning">Document content-type invalid:</strong> received "'+ data.response_type +'", expected "'+ data.expected_type +'"<br />';
+							}
+
+							if(data.valid)
+							{
+								string += '<strong>Document structure validated</strong> as '+ data.expected_type +'<br />';
+							}
+							else
+							{
+								status = 'error';
+								string += '<strong class="error">Document structure invalid:</strong> expecting well-formed '+ data.expected_type +'<br />';
+							}
+
+							if(data.response_type == 'text/xml')
+							{
+								if(data.schema_validated)
+								{
+									string += '<strong>Document content validated</strong> against the <a href="./xsd/'+ data.request +'.xsd">XSD Schema</a><br />';
+								}
+								else
+								{
+									if(status != 'error')
+									{
+										status = 'warning';
+									}
+									string += '<strong class="warning">Document content failed to validate</strong> against the <a href="./xsd/'+ data.request +'.xsd">XSD Schema</a></br />';
+								}
+							}
+							string += '</p>';
+							response.append(string);
+							$('#response p').last().addClass(status);
 						}
 					});
 				}
 
+				$('#response p').remove();			
 
-				test_urls.forEach(function(url)
+				response.append('<h2>GET All</h2>');
+
+				get_all_urls.forEach(function(url)
 				{
 					test_url(url);
 				});
 
-				response.show();
+				response.append('<h2>GET Region</h2>');
 
-				// 2.1.1 GET All (XML)
+				get_region_urls.forEach(function(url)
+				{
+					test_url(url);
+				});
 
+				response.append('<h2>PUT</h2>');
+
+				put_urls.forEach(function(url)
+				{
+					test_url(url);
+				});
+
+				response.append('<h2>POST</h2>');
+
+				post_urls.forEach(function(url)
+				{
+					test_url(url);
+				});
+
+				response.append('<h2>DELETE</h2>');
+
+				delete_urls.forEach(function(url)
+				{
+					test_url(url);
+				});
+
+				$('#response').append('<p style="text-align: center; border: none;"><a href="#top">Scroll to Top</a></p>');
 				
 			});
-			--></script>
+		});
+	--></script>
+
+</head>
+<body>
+	<a name="top"></a>
+	<div class="container">
+
+		<header class="sixteen columns">
+			<h1 class="remove-bottom" style="margin-top: 40px">API Test Script</h1>
+			<h5>Advanced Topics in Web Development</h5>
+			<hr />
+		</header>
+
+		<article class="sixteen columns">
+
+			<p>This script tests a users API for the Advanced Topics in Web Development module to ensure everything works correctly.</p>
+
+
+			<form id="test-form" action="./" method="get">
+				<p><label for="username">To start, fill in your username below:</label></p>
+				<p><input type="text" name="username" placeholder="e.g. b2-argo" /> <input type="submit" value="Go" /></p>
+			</form>
+
+			<section id="response">
+				
+			</section>
+
+			
+
+			<hr />
 
 		</article>
 

@@ -175,32 +175,32 @@
 						success: function(data) 
 						{
 							var status = 'success';
-							var string = '<p><strong>Document found:</strong> <span class="url"><a href="'+ base + test_url +'">'+ base + test_url +'</a></span> (HTTP 200 OK)<br />';
+							var string = '<p><strong>Found:</strong> <span class="url"><a href="'+ base + test_url +'">'+ base + test_url +'</a></span> (HTTP 200 OK)<br />';
 							if(data.expected_type == data.response_type)
 							{
-								string += '<strong>Document content-type validated</strong> as '+ data.response_type +'<br />';
+								string += '<strong>Content-type validated</strong> as '+ data.response_type +'<br />';
 							}
 							else
 							{
 								status = 'warning';
-								string += '<strong class="warning">Document content-type invalid:</strong> received "'+ data.response_type +'", expected "'+ data.expected_type +'"<br />';
+								string += '<strong class="warning">Content-type invalid:</strong> received "'+ data.response_type +'", expected "'+ data.expected_type +'"<br />';
 							}
 
 							if(data.valid)
 							{
-								string += '<strong>Document structure validated</strong> as '+ data.expected_type +'<br />';
+								string += '<strong>Structure validated</strong> as '+ data.expected_type +'<br />';
 							}
 							else
 							{
 								status = 'error';
-								string += '<strong class="error">Document structure invalid:</strong> expecting well-formed '+ data.expected_type +'<br />';
+								string += '<strong class="error">Structure invalid:</strong> expecting well-formed '+ data.expected_type +'<br />';
 							}
 
 							if(data.response_type == 'text/xml')
 							{
 								if(data.schema_validated)
 								{
-									string += '<strong>Document content validated</strong> against the <a href="./xsd/'+ data.request +'.xsd">XSD Schema</a><br />';
+									string += '<strong>Content validated</strong> against the <a href="./xsd/'+ data.request +'.xsd">XSD Schema</a><br />';
 								}
 								else
 								{
@@ -208,7 +208,7 @@
 									{
 										status = 'warning';
 									}
-									string += '<strong class="warning">Document content failed to validate</strong> against the <a href="./xsd/'+ data.request +'.xsd">XSD Schema</a></br />';
+									string += '<strong class="warning">Content failed to validate</strong> against the <a href="./xsd/'+ data.request +'.xsd">XSD Schema</a></br />';
 								}
 							}
 							string += '</p>';
@@ -218,7 +218,7 @@
 					});
 				}
 
-				$('#response p').remove();			
+				$('#response p, #response h2').remove();			
 
 				response.append('<h2>GET All</h2>');
 

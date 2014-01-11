@@ -48,7 +48,7 @@
 
 	if(strstr($headers[0], '200'))
 	{
-			// Create a probe for the delete requests :p
+		// Probe the delete request
 		if($request === 'delete')
 		{
 			get_headers($probe_url);

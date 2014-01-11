@@ -8,6 +8,7 @@
 2. **REST Service:** Published at specified URLs
 3. **Client Side Processing and Visualization:** [http://www.cems.uwe.ac.uk/~b2-argo/atwd/client](http://www.cems.uwe.ac.uk/~b2-argo/atwd/client/index.html)
 4. **Documentation:** [http://www.cems.uwe.ac.uk/~b2-argo/atwd/crimes/doc/index.html](http://www.cems.uwe.ac.uk/~b2-argo/atwd/crimes/doc/index.html)
+5. **Test Script:** [http://www.cems.uwe.ac.uk/~b2-argo/atwd/test/](http://www.cems.uwe.ac.uk/~b2-argo/atwd/test/)
 
 ## Learning Outcomes & Problems Encountered
 

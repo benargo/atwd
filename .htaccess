@@ -50,7 +50,11 @@ BrowserMatch bMSIE !no-gzip !gzip-only-text/html
 	# 5. Documentation
 	RewriteRule ^crimes/doc(/)?(index.html)?$ docs/readme.html [L]
 
+<<<<<<< Updated upstream
 	# Catch all
 	RewriteRule ^crimes/.*/.* api/catch_all.php [L,QSA]
+=======
+	RewriteRule ^crimes/.* api/catch_all.php [L,QSA]
+>>>>>>> Stashed changes
 </IfModule>
 

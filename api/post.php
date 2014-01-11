@@ -20,6 +20,12 @@ if(uwe\atwd\uri::get('region') == 'british_transport_police')
 	uwe\atwd\uri::set('region', 'btp');
 }
 
+// Action Fraud's ID in the database is 'af'
+if(uwe\atwd\uri::get('region') == 'action_fraud')
+{
+	uwe\atwd\uri::set('region', 'af');
+}
+
 $region = uwe\atwd\region::get(uwe\atwd\uri::get('region'));
 
 /**

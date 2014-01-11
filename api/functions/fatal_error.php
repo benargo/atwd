@@ -40,7 +40,7 @@ if(!function_exists('fatal_handle'))
 	}
 
 	// Set error reporting to E_ALL
-	error_reporting(E_ALL);
+	error_reporting(0);
 
 	// Register the above function to run on fatal errors
 	register_shutdown_function('fatal_handle');

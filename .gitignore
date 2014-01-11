@@ -1,5 +1,6 @@
 logs/*
 data/custom/*
 *.phps
+test/log/
 atwd_assignment.sublime-project
 atwd_assignment.sublime-workspace

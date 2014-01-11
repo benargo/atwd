@@ -50,6 +50,9 @@ BrowserMatch bMSIE !no-gzip !gzip-only-text/html
 	# 5. Documentation
 	RewriteRule ^crimes/doc(/)?(index.html)?$ docs/readme.html [L]
 
+	# 6. Unit Testing
+	RewriteRule ^test/xsd/(.*)$ test/xsd.php?url=$1 [L]
+
 	# Catch all
 	RewriteRule ^crimes/.*/.* api/catch_all.php [L,QSA]
 </IfModule>

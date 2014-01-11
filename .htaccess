@@ -56,4 +56,3 @@ BrowserMatch bMSIE !no-gzip !gzip-only-text/html
 	# Catch all
 	RewriteRule ^crimes/.*/.* api/catch_all.php [L,QSA]
 </IfModule>
-

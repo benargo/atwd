@@ -12,7 +12,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element maxOccurs="unbounded" ref="region"/>
-        <xs:element maxOccurs="unbounded" ref="national"/>
+        <xs:element maxOccurs="2" minOccurs="2" ref="national"/>
         <xs:element ref="england"/>
         <xs:element ref="wales"/>
       </xs:sequence>

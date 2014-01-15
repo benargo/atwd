@@ -9,10 +9,6 @@ php_value error_log logs/error.log
 	ErrorDocument 404 /~b2-argo/atwd/api/catch_all.php
 </FilesMatch>
 
-<Directory "/nas/students/b/b2-argo/unix/public_html/atwd/test/xsd/">
-	Options +Indexes
-</Directory>
-
 # Compression
 AddOutputFilterByType DEFLATE text/html text/plain text/xml application/xml application/xhtml+xml text/javascript text/css application/x-javascript
 BrowserMatch ^Mozilla/4 gzip-only-text/html

@@ -9,7 +9,7 @@ php_value error_log logs/error.log
 	ErrorDocument 404 /~b2-argo/atwd/api/catch_all.php
 </FilesMatch>
 
-<Directory test/xsd/>
+<Directory "/nas/students/b/b2-argo/unix/public_html/atwd/test/xsd/">
 	Options +Indexes
 </Directory>
 

@@ -14,16 +14,17 @@
 * Table of Contents
 * -----------------
 * 1. Setup
-* 2. Configuration Files
-* 3. Helpful Functions
-* 4. Classes
+* 2. Helpful Functions
+* 3. Classes
+* 4. Enable requests from off campus
+* 5. Caching
 ***************************************************/
 
 // 1. the API first of all
 require_once('../../../global/cems_config.php');
 define('BASEDIR', $_CEMS_SERVER['DOCUMENT_ROOT'] .'public_html/atwd/');
 
-// 3. Helpful Functions
+// 2. Helpful Functions
 foreach(scandir(BASEDIR.'api/functions/') as $file)
 {
 	if(is_dir($file))
@@ -36,7 +37,7 @@ foreach(scandir(BASEDIR.'api/functions/') as $file)
 	}
 }
 
-// 4. Classes
+// 3. Classes
 $iterator = new RecursiveDirectoryIterator(BASEDIR.'api/classes');
 foreach (new RecursiveIteratorIterator($iterator) as $filename => $file) 
 {
@@ -46,5 +47,5 @@ foreach (new RecursiveIteratorIterator($iterator) as $filename => $file)
 	}
 }
 
-// Enable requests from off campus - like a true API should
+// 4. Enable requests from off campus - like a true API should
 header("Access-Control-Allow-Origin: *");

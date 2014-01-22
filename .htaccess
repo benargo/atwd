@@ -19,6 +19,8 @@ BrowserMatch bMSIE !no-gzip !gzip-only-text/html
 	RewriteEngine On
 	RewriteBase /~b2-argo/atwd/
 
+	#RewriteRule ^(.*)$ $1 [L]
+
 	RewriteRule ^data(\/)?$ data/upload [R]
 
 	# PHP Source Files

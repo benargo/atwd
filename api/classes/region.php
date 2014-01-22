@@ -2,8 +2,8 @@
 
 if(!defined('BASEDIR')) exit('No direct script access allowed');
 
-class region {
-
+class region 
+{
 	public $id;
 	public $name;
 	private $total_crime = 0;
@@ -12,6 +12,8 @@ class region {
 
 	/**
 	 * __construct()
+	 * 
+	 * Initialises the class defined by the snake_case slug we feed it.
 	 *
 	 * @access public
 	 * @param string $slug
@@ -24,16 +26,19 @@ class region {
 		$xml->registerXPathNamespace('atwd', 'http://www.cems.uwe.ac.uk/assignments/10008548/atwd/');
 
 		$region = $xml->xpath("//atwd:region[@id='$slug']");
+		
+		// No region found?
 		if(empty($region))
 		{
-			return;		
+			return;
 		}
 
 		$region = $region[0];
 
 		$this->id = $slug;
 		$this->name = (string) $region->name;
-			
+
+		// Loop through each of the areas
 		foreach($xml->xpath("//atwd:region[@id='$slug']/atwd:area") as $area)
 		{
 			$this->areas[(string) $area->attributes()['id']] = new area($area);
@@ -71,6 +76,7 @@ class region {
 			$xml->registerXPathNamespace('atwd', 'http://www.cems.uwe.ac.uk/assignments/10008548/atwd/');
 
 			$return = array();
+			
 			foreach($xml->xpath("//atwd:region") as $region)
 			{
 				$return[(string) $region['id']] = new region((string) $region['id']);
@@ -79,6 +85,7 @@ class region {
 		else
 		{
 			$return = new region($region);
+			
 			if(empty($return->name))
 			{
 				$return = false;
@@ -183,6 +190,7 @@ class region {
 	public static function getTotalEngland($fraud = false)
 	{
 		$total = 0;
+		
 		foreach(self::get() as $region_id => $region)
 		{
 			if($region_id == 'wales')
@@ -208,6 +216,7 @@ class region {
 	public static function getTotalEnglandAndWales($fraud = false)
 	{
 		$total = 0;
+		
 		foreach(self::get() as $region_id => $region)
 		{
 			$total += $region->getTotalCrime($fraud);
@@ -282,10 +291,12 @@ class region {
 	public function postArea(area $area)
 	{
 		$total_crime = $this->total_crime + $area->getTotalCrime(false);
+		
 		if(array_key_exists($area->id, $this->areas))
 		{
 			$total_crime -= $this->areas[$area->id]->getTotalCrime(false);
 		}
+		
 		$this->areas[$area->id] = $area;
 		$this->putTotalCrime($total_crime);
 

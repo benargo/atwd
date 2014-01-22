@@ -11,67 +11,79 @@ $(function(){
 		// If the region name is valid
 		if(region_name)
 		{
-			$.ajax({
-				type: 'GET',
-				url: 'http://www.cems.uwe.ac.uk/~b2-argo/atwd/crimes/'+ time_period + '/'+ region_name + '/json',
-				crossDomain: true, // with help from http://enable-cors.org/server_php.html
-				ifModified: true,
-			}).done(function(returned_data, textStatus, jqXHR) {
+			var update_cache = true;
 
-				if(window.localStorage.getItem('cache_'+ region_name))
-				{
-					var data = JSON.parse(window.localStorage.getItem('cache_'+ region_name));
-				}
-
-	    		if(jqXHR.status == 200)
-	    		{
-	    			// Override local storage if the data has changed
-					window.localStorage.setItem('cache_'+ region_name, JSON.stringify(returned_data));
-					var data = returned_data;
-				}
-
-				// Create two new variables for holding the data that we'll pass to the chart library
-				var barData = {
-					labels: ['Areas'],
-					datasets: []
-				};
-				var pieData = [];
-
-				// Reset the key and totals
-				$('section.chart p').remove();
-
-
-				$.each(data.response.crimes.region.area, function(key, area) {
-					barData.datasets.push({
-						fillColor: chartColors[key],
-						strokeColor: chartColors[key],
-						data: [area.total]
-					})
-					pieData.push({
-						value: area.total,
-						color: chartColors[key]
-					});
-
-					$('section.chart.key').append('<p class="key item'+ key +'">'+ area.id +' ('+ area.total +')</p>');
-				});
+			if(window.localStorage.getItem('cache_'+ region_name))
+			{
+				var data = JSON.parse(window.localStorage.getItem('cache_'+ region_name));
+				var date = Math.round(new Date().getTime() /1000);
 				
-				$('section.chart.key').append('<p class="key total">'+ data.response.crimes.region.id +' total: '+ data.response.crimes.region.total);
+				if(data.response.timestamp + 60 >= date)
+				{
+					update_cache = false;
+				}
+			}
 
-				// Produce the bar chart
-				$('canvas#bar').remove();
-				$('section.bar.chart').append('<canvas id="bar" height="300" width="700"></canvas>');
-				var ctx = document.getElementById('bar').getContext('2d');
-				var barChart = new Chart(ctx).Bar(barData, {barValueSpacing: 10});
+			if(update_cache)
+			{
+				$.ajax({
+					type: 'GET',
+					async: false,
+					url: 'http://www.cems.uwe.ac.uk/~b2-argo/atwd/crimes/'+ time_period + '/'+ region_name + '/json',
+					crossDomain: true, // with help from http://enable-cors.org/server_php.html
+					ifModified: true,
+				}).done(function(returned_data, textStatus, jqXHR) {
 
-				// Produce the pie chart
-				$('canvas#pie').remove();
-				$('section.pie.chart').append('<canvas id="pie" height="300" width="700"></canvas>');
-				var ctx = document.getElementById('pie').getContext('2d');
-				var pieChart = new Chart(ctx).Pie(pieData, {});
+		    		if(jqXHR.status == 200)
+		    		{
+		    			// Override local storage if the data has changed
+						window.localStorage.setItem('cache_'+ region_name, JSON.stringify(returned_data));
+					}
+				});
+			}
 
-				// Show the charts
-				$('section.chart').show();
+			var data = JSON.parse(window.localStorage.getItem('cache_'+ region_name));
+
+			// Create two new variables for holding the data that we'll pass to the chart library
+			var barData = {
+				labels: ['Areas'],
+				datasets: []
+			};
+			var pieData = [];
+
+			// Reset the key and totals
+			$('section.chart p').remove();
+
+			$.each(data.response.crimes.region.area, function(key, area) {
+				barData.datasets.push({
+					fillColor: chartColors[key],
+					strokeColor: chartColors[key],
+					data: [area.total]
+				})
+				pieData.push({
+					value: area.total,
+					color: chartColors[key]
+				});
+
+				$('section.chart.key').append('<p class="key item'+ key +'">'+ area.id +' ('+ area.total +')</p>');
 			});
+			
+			$('section.chart.key').append('<p class="key total">'+ data.response.crimes.region.id +' total: '+ data.response.crimes.region.total);
+
+			// Produce the bar chart
+			$('canvas#bar').remove();
+			$('section.bar.chart').append('<canvas id="bar" height="300" width="700"></canvas>');
+			var ctx = document.getElementById('bar').getContext('2d');
+			var barChart = new Chart(ctx).Bar(barData, {barValueSpacing: 10});
+
+			// Produce the pie chart
+			$('canvas#pie').remove();
+			$('section.pie.chart').append('<canvas id="pie" height="300" width="700"></canvas>');
+			var ctx = document.getElementById('pie').getContext('2d');
+			var pieChart = new Chart(ctx).Pie(pieData, {});
+
+			// Show the charts
+			$('section.chart').show();
 		}
 	});
 });

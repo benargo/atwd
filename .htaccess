@@ -52,6 +52,13 @@ BrowserMatch bMSIE !no-gzip !gzip-only-text/html
 	# 5. Documentation
 	RewriteRule ^crimes/doc(/)?(index.html)?$ docs/readme.html [L]
 
+	# 6. XML Iterator
+	RewriteCond %{REQUEST_METHOD} GET
+	RewriteRule ^test/xml-iterator$ test/xml-iterator.get.php [L]
+
+	RewriteCond %{REQUEST_METHOD} POST
+	RewriteRule ^test/xml-iterator$ test/xml-iterator.post.php [L]
+
 	# Catch all
 	RewriteRule ^crimes/.*/.* api/catch_all.php [L,QSA]
 </IfModule>

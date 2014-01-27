@@ -36,6 +36,13 @@
 	}
 
 	// Create a probe for the delete requests :p
+	if($request === 'post')
+	{
+		$probe_url = preg_replace('/crimes\/([\-\d]+)\/post\/(\w+)\/(\w+)\/(.+)\/(xml|json)$/', 'crimes/6-2013/delete/wessex/xml', $_GET['url']);
+		get_headers($probe_url);
+	}
+
+	// Create a probe for the delete requests :p
 	if($request === 'delete')
 	{
 		$probe_url = preg_replace('/crimes\/([\-\d]+)\/delete\/(\w+)\/(xml|json)$/', 'crimes/6-2013/post/south_west/wessex/hom:4-vwi:15-vwoi:25/xml', $_GET['url']);
@@ -47,7 +54,7 @@
 	if(strstr($headers[0], '200'))
 	{
 		// Probe the delete request
-		if($request === 'delete')
+		if($probe_url)
 		{
 			get_headers($probe_url);
 		}

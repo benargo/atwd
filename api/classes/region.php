@@ -2,6 +2,25 @@
 
 if(!defined('BASEDIR')) exit('No direct script access allowed');
 
+/**
+ * 'uwe\atwd\region' class
+ * 
+ * This class holds an instance of a specific Region.
+ * A Region contains multiple Areas within it, the Areas are instances of 'uwe\atwd\area' class
+ *
+ ** Table of Contents
+ * 1. Variables
+ * 2.  __construct()
+ * 3.  ::get()
+ * 4.  getTotalCrime()
+ * 5.  _setTotalCrime()
+ * 6.  getTotalFraud()
+ * 7.  getTotalEngland()
+ * 8.  getTotalEnglandAndWales()
+ * 9.  putTotalCrime()
+ * 10. postArea()
+ * 11. deleteArea()
+ */
 class region 
 {
 	public $id;
@@ -318,3 +337,4 @@ class region
 		unset($this->areas[$area_name]);
 	}
 }
+

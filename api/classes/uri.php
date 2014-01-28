@@ -2,8 +2,19 @@
 
 if(!defined('BASEDIR')) exit('No direct script access allowed');
 
-class uri {
-
+/**
+ * 'uwe\atwd\uri' class
+ * 
+ * This class handles the API's URI, breaks it up and gets specific parameters
+ *
+ ** Table of Contents
+ * 1. Variables
+ * 2. setup()
+ * 3. get()
+ * 4. set()
+ */
+class uri 
+{
 	private static $params = array();
 
 	/**

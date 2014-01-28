@@ -2,6 +2,24 @@
 
 if(!defined('BASEDIR')) exit('No direct script access allowed');
 
+/**
+ * 'error' class
+ * 
+ * This class handles the creation and output of error messages. 
+ * Error codes this class accepts are 404, 500 and 501, as per the ATWD brief.
+ * No 600+ error codes (which, by the way aren't allowed HTTP) are used.
+ *
+ ** Table of Contents
+ * 1. Variables
+ * 2. __construct()
+ * 3. setDescription()
+ * 4. setType()
+ * 5. getMessageAsText()
+ * 6. getMessageAsHTML()
+ * 7. setMessage()
+ * 8. log()
+ * 9. respond()
+ */
 class error {
 
 	private $error_code;
@@ -19,7 +37,7 @@ class error {
 	 * @access public
 	 * @param int $error_code
 	 * @param $message = NULL
-	 * @param $line = NULL
+	 * @param $line = 'undefined'
 	 * @return void
 	 */
 	function __construct($error_code, $message = NULL, $line = 'undefined')

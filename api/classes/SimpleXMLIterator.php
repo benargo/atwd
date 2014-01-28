@@ -2,8 +2,13 @@
 
 if(!defined('BASEDIR')) exit('No direct script access allowed');
 
-class SimpleXMLIterator {
-
+/**
+ * 'uwe\atwd\SimpleXMLIterator' class
+ *
+ * This class simply iterates over a SimpleXMLElement
+ */
+class SimpleXMLIterator 
+{
 	private static $xml = array();
 
 	/**
@@ -14,7 +19,6 @@ class SimpleXMLIterator {
 	 * @param \SimpleXMLElement $xml
 	 * @return nested array
 	 */
-
 	public static function iterate(\SimpleXMLElement $xml, $fresh = true)
 	{
 		if($fresh)

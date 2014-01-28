@@ -2,10 +2,28 @@
 
 if(!defined('BASEDIR')) exit('No direct script access allowed');
 
-class area {
-
+/**
+ * 'uwe\atwd\area' class
+ * 
+ * This class holds an instance of a specific Area.
+ * For example, Avon and Somerset Constabulary covers the 'Avon and Somerset' area.
+ *
+ * The area is loaded by passing in a SimpleXMLElement containing the XML for a single area,
+ * this is pulled from the XML database file, and any custom data is loaded on top.
+ *
+ ** Table of Contents
+ * 1. Variables
+ * 2. __construct()
+ * 3. getTotalCrime()
+ * 4. getTotalFraud()
+ * 5. iterate()
+ */
+class area 
+{
+	// Handler for Iterations 
 	private static $iterations;
 
+	// Area-specific variables
 	public $id;
 	public $name;
 	private $total_crime;

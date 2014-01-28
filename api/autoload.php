@@ -25,15 +25,12 @@ require_once('../../../global/cems_config.php');
 define('BASEDIR', $_CEMS_SERVER['DOCUMENT_ROOT'] .'public_html/atwd/');
 
 // 2. Helpful Functions
-foreach(scandir(BASEDIR.'api/functions/') as $file)
+$iterator = new RecursiveDirectoryIterator(BASEDIR.'api/functions');
+foreach (new RecursiveIteratorIterator($iterator) as $filename => $file) 
 {
-	if(is_dir($file))
+	if(substr($file->getFileName(), -4) == '.php')
 	{
-
-	}
-	if(substr($file, -4) == '.php')
-	{
-		require_once(BASEDIR.'api/functions/'. $file);	
+		require_once($file->getPathName());
 	}
 }
 

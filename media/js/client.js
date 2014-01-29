@@ -52,7 +52,7 @@ $(function(){
 			var pieData = [];
 
 			// Reset the key and totals
-			$('section.chart p').remove();
+			$('section.chart.key p').remove();
 
 			$.each(data.response.crimes.region.area, function(key, area) {
 				barData.datasets.push({

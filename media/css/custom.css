@@ -24,3 +24,10 @@ p.key {
     background-color: #FF59B8; }
   p.key.total {
     font-weight: bold; }
+
+.y-axis {
+  -moz-transform: rotate(270deg);
+  -webkit-transform: rotate(270deg);
+  -o-transform: rotate(270deg);
+  -ms-transform: rotate(270deg);
+  transform: rotate(270deg); }

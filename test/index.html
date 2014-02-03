@@ -25,6 +25,7 @@
 	#response p.success { border-color: #00b224; }
 	strong.error { color: #ff0200; }
 	strong.warning { color: #ff9900; }
+	strong.success { color: #00b224; }
 	</style>
 
 	<!--[if lt IE 9]>
@@ -176,10 +177,10 @@
 						success: function(data) 
 						{
 							var status = 'success';
-							var string = '<p><strong>Found:</strong> <span class="url"><a href="'+ base + test_url +'">'+ base + test_url +'</a></span> (HTTP 200 OK)<br />';
+							var string = '<p><strong class="success">Found:</strong> <span class="url"><a href="'+ base + test_url +'">'+ base + test_url +'</a></span> (HTTP 200 OK)<br />';
 							if(data.expected_type == data.response_type)
 							{
-								string += '<strong>Content-type validated</strong> as '+ data.response_type +'<br />';
+								string += '<strong class="success">Content-type validated</strong> as '+ data.response_type +'<br />';
 							}
 							else
 							{
@@ -189,7 +190,7 @@
 
 							if(data.valid)
 							{
-								string += '<strong>Structure validated</strong> as '+ data.expected_type +'<br />';
+								string += '<strong class="success">Structure validated</strong> as '+ data.expected_type +'<br />';
 							}
 							else
 							{
@@ -201,7 +202,7 @@
 							{
 								if(data.schema_validated)
 								{
-									string += '<strong>Content validated</strong> against the <a href="./xsd/'+ data.request +'.xsd">XSD Schema</a><br />';
+									string += '<strong class="success">Content validated</strong> against the <a href="./xsd/'+ data.request +'.xsd">XSD Schema</a><br />';
 								}
 								else
 								{

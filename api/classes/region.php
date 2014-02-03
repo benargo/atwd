@@ -163,7 +163,7 @@ class region
             $xml = simplexml_load_file(BASEDIR .'data/custom/regions/'. $this->id .'.xml');
             $this->total_crime = $xml->region->total_recorded_crime->including_fraud - $this->total_fraud;
 
-            if(filemtime(BASEDIR .'data/custom/regions/'. $this->id .'.xml') > $this->last_modified_time)
+            if(filemtime(BASEDIR .'data/custom/regions/'. $this->id .'.xml') > self::$last_modified_time)
             {
             	self::$last_modified_time = filemtime(BASEDIR .'data/custom/regions/'. $this->id .'.xml');
             }

@@ -83,7 +83,7 @@ $(function(){
 			var pieChart = new Chart(ctx).Pie(pieData, {});
 
 			// Show the charts
-			$('section.chart').show();
+			$('section.chart, p.bar.y-axis').show();
 		}
 	});
 });

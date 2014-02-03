@@ -16,6 +16,8 @@ switch(uwe\atwd\uri::get('year'))
 
 $regions = uwe\atwd\region::get('all');
 
+header('Last-Modified: '. date('r', uwe\atwd\region::last_modified_time()));
+
 // Switch through the response formats
 switch(uwe\atwd\uri::get('response'))
 {

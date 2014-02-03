@@ -30,6 +30,8 @@ $region = uwe\atwd\region::get(uwe\atwd\uri::get('region'));
 
 if($region)
 {
+	header('Last-Modified: '. date('r', $region->last_modified_time()));
+
 	// Switch through the response formats
 	switch(uwe\atwd\uri::get('response'))
 	{

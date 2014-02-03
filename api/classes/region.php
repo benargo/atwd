@@ -20,6 +20,7 @@ if(!defined('BASEDIR')) exit('No direct script access allowed');
  * 9.  putTotalCrime()
  * 10. postArea()
  * 11. deleteArea()
+ * 12. last_modified_time()
  */
 class region 
 {
@@ -28,6 +29,8 @@ class region
 	private $total_crime = 0;
 	private $total_fraud = 0;
 	private $areas = array();
+
+	private static $last_modified_time = 0;
 
 	/**
 	 * __construct()
@@ -43,6 +46,11 @@ class region
 		// Load the region in from the XML
 		$xml = simplexml_load_file(BASEDIR .'data/recorded_crime.xml');
 		$xml->registerXPathNamespace('atwd', 'http://www.cems.uwe.ac.uk/assignments/10008548/atwd/');
+
+		if(filemtime(BASEDIR .'data/recorded_crime.xml') > self::$last_modified_time)
+		{
+			self::$last_modified_time = filemtime(BASEDIR .'data/recorded_crime.xml');
+		}
 
 		$region = $xml->xpath("//atwd:region[@id='$slug']");
 		
@@ -71,6 +79,11 @@ class region
 				$xml = simplexml_load_file($filename);
 				$area = new area($xml->region->area, $this->id);
 				$this->areas[$area->id] = $area;
+
+				if(filemtime($filename) > $this->last_modified_time)
+				{
+					self::$last_modified_time = filemtime($filename);
+				}
 			}
 		}
 
@@ -149,6 +162,11 @@ class region
         {
             $xml = simplexml_load_file(BASEDIR .'data/custom/regions/'. $this->id .'.xml');
             $this->total_crime = $xml->region->total_recorded_crime->including_fraud - $this->total_fraud;
+
+            if(filemtime(BASEDIR .'data/custom/regions/'. $this->id .'.xml') > $this->last_modified_time)
+            {
+            	self::$last_modified_time = filemtime(BASEDIR .'data/custom/regions/'. $this->id .'.xml');
+            }
         }
         else
         {
@@ -335,6 +353,19 @@ class region
 	{
 		$this->putTotalCrime($this->total_crime - $this->areas[$area_name]->getTotalCrime(false));
 		unset($this->areas[$area_name]);
+	}
+
+	/**
+	 * last_modified_time()
+	 *
+	 * Generates the last modified time of the data
+	 *
+	 * @access public
+	 * @return (int) unix time
+	 */
+	public static function last_modified_time()
+	{
+		return self::$last_modified_time;
 	}
 }
 

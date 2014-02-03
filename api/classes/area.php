@@ -30,7 +30,6 @@ class area
 	private $total_fraud;
 	private $crime = array();
 
-
 	/**
 	 * __construct()
 	 * 

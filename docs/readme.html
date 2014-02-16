@@ -14,15 +14,20 @@
 
 	<!-- CSS -->
 	<!-- http://www.getskeleton.com/ -->
-	<link rel="stylesheet" href="/~b2-argo/atwd/media/css/base.css">
-	<link rel="stylesheet" href="/~b2-argo/atwd/media/css/skeleton.css">
-	<link rel="stylesheet" href="/~b2-argo/atwd/media/css/layout.css">
+	<link rel="stylesheet" href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/media/css/base.css">
+	<link rel="stylesheet" href="http://www.cems.uwe.ac.uk//~b2-argo/atwd/media/css/skeleton.css">
+	<link rel="stylesheet" href="http://www.cems.uwe.ac.uk//~b2-argo/atwd/media/css/layout.css">
+	<style type="text/css">
+		#response { display: none; }
+		#response p { border: solid 5px #00b224; border-radius: 3px; -webkit-border-radius: 3px; padding: 5px; }
+	</style>
 
 	<!--[if lt IE 9]>
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
 
 	<!-- JavaScript -->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script type="text/javascript">
 	<!--// Google Analytics
 
@@ -36,6 +41,22 @@
 	    	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 	    	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 	  	})();
+
+	  	// Reset Script
+	  	$(function(){
+			  	$('#reset').click(function(event){
+		  		event.preventDefault();
+
+		  		$.ajax({
+		  			url: '/~b2-argo/atwd/crimes/reset',
+		  			success: function(data, textStatus, jqXHR) {
+		  				$('#response').show().delay(5000).fadeOut('slow');
+		  			},
+		  		})
+	  		});
+	  	});
+	  	
+
 	-->
 	</script>
 
@@ -44,7 +65,7 @@
 
 	<div class="container">
 
-		<a name="top">
+		<a name="top"></a>
 		<header class="sixteen columns">
 			<h1 class="remove-bottom" style="margin-top: 40px">Documentation</h1>
 			<h5>Advanced Topics in Web Development</h5>
@@ -52,6 +73,10 @@
 		</header>
 
 		<article class="sixteen columns">
+
+			<section id="response">
+				<p>All custom data has been reset. Figures are now as they were in the original CSV file.</p>
+			</section>
 
 			<section class="twelve columns alpha">
 
@@ -76,6 +101,8 @@
 					<li><a href="#2">Learning Outcomes &amp; Problems Encountered</a></li>
 					<li><a href="#3">Source Code</a></li>
 				</ol>
+
+				<p style="text-align: center;"><a class="button" href="javascript:;" id="reset">Reset Custom Data</a></p>
 
 			</aside>
 
@@ -204,6 +231,7 @@
 
 				<ol>
 				<li><a href="https://github.com/benargo/atwd/blob/master/.htaccess">.htaccess</a></li>
+				<li><a href="https://github.com/benargo/atwd/blob/master/api/reset.php">Custom Data Reset Script</a> (<a href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/api/reset.phps">Backup</a>)</li>
 				</ol>
 
 

@@ -270,6 +270,11 @@
 				$('#response').append('<p style="text-align: center; border: none;"><a href="#top">Scroll to Top</a></p>');
 				
 			});
+			
+			<?php if($_GET['username']): ?>
+			$('#test-form').submit();
+			<?php endif; ?>
+
 		});
 	-->
 	</script>
@@ -307,7 +312,7 @@
 
 			<form id="test-form" action="./" method="get">
 				<p><label for="username">To start, fill in your username below:</label></p>
-				<p><input type="text" name="username" placeholder="e.g. b2-argo" /> <input type="submit" value="Go" /></p>
+				<p><input type="text" name="username" placeholder="e.g. b2-argo" <?php if($_GET['username']) echo 'value="'. $_GET['username'] .'"'; ?> /> <input type="submit" value="Go" /></p>
 			</form>
 
 			<section id="response">

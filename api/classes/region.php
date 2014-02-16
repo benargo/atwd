@@ -80,7 +80,7 @@ class region
 				$area = new area($xml->region->area, $this->id);
 				$this->areas[$area->id] = $area;
 
-				if(filemtime($filename) > $this->last_modified_time)
+				if(filemtime($filename) > self::$last_modified_time)
 				{
 					self::$last_modified_time = filemtime($filename);
 				}

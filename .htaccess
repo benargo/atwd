@@ -21,6 +21,8 @@ BrowserMatch bMSIE !no-gzip !gzip-only-text/html
 
 	#RewriteRule ^(.*)$ $1 [L]
 
+	RewriteRule ^$ crimes/doc/index.html [R]
+
 	RewriteRule ^data(\/)?$ data/upload [R]
 
 	# PHP Source Files

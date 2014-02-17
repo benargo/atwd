@@ -58,5 +58,7 @@ BrowserMatch bMSIE !no-gzip !gzip-only-text/html
 	RewriteRule ^crimes/doc(/)?(index.html)?$ docs/readme.html [L]
 
 	# 5. Catch all
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteCond %{REQUEST_FILENAME} !-f
 	RewriteRule ^crimes/.*/.* api/catch_all.php [L,QSA]
 </IfModule>

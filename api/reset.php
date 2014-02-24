@@ -1,5 +1,5 @@
 <?php
-require_once(__DIR__ .'autoload.php');
+require_once(__DIR__ .'/autoload.php');
 
 // Iterate through the custom data folders
 $iterator = new RecursiveDirectoryIterator(BASEDIR.'data/custom');

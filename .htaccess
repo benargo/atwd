@@ -19,8 +19,6 @@ BrowserMatch bMSIE !no-gzip !gzip-only-text/html
 	RewriteEngine On
 	RewriteBase /~b2-argo/atwd/
 
-	#RewriteRule ^(.*)$ $1 [L]
-
 	RewriteRule ^$ crimes/doc/index.html [R]
 
 	RewriteRule ^data(\/)?$ data/upload [R]
@@ -52,10 +50,13 @@ BrowserMatch bMSIE !no-gzip !gzip-only-text/html
 	RewriteRule ^crimes/([\-\d]+)/delete/(\w+)/(xml|json)$ api/delete.php?year=$1&area=$2&response=$3 [L,QSA]
 
 	# 3. Reset Script
-	RewriteRule ^crimes/reset$ api/reset.php
+	RewriteRule ^crimes/reset$ api/reset.php [L]
 
 	# 4. Documentation
 	RewriteRule ^crimes/doc(/)?(index.html)?$ docs/readme.html [L]
+
+	# 5. Test Script
+	RewriteRule ^test/([a-z0-9\-]+)$ test/index.php?username=$1 [L]
 
 	# 5. Catch all
 	RewriteCond %{REQUEST_FILENAME} !-d

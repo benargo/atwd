@@ -1,6 +1,5 @@
 <?php
 require_once(__DIR__ .'/autoload.php');
-header('Content-type: application/json');
 
 // An empty array to contain all the files
 $deleted_files = array();
@@ -25,9 +24,11 @@ foreach (new RecursiveIteratorIterator($iterator) as $filename => $file)
 	}
 }
 
-$json = array();
-$json['deleted'] = $deleted_files;
-$json['failed'] = $failed_files;
-$json['success'] = $success;
-
-echo json_encode($json);
+?><section id="response" class="<?php echo ($success === true ? 'success' : 'warning'); ?>">
+	<?php foreach($deleted_files as $file): ?>
+	<p><span class="success">Deleted:</span> <?php echo $file; ?></p>
+	<?php endforeach; ?>
+	<?php foreach($failed_files as $file): ?>
+	<p><span class="warning">Failed to delete:</span> <?php echo $file; ?></p>
+	<?php endforeach; ?>
+</section>

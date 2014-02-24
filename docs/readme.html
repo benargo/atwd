@@ -50,7 +50,7 @@
 		  		$.ajax({
 		  			url: '/~b2-argo/atwd/crimes/reset',
 		  			success: function(data, textStatus, jqXHR) {
-		  				$('#response').show().delay(5000).fadeOut('slow');
+		  				$('#response').replaceWith(data).show().delay(5000).fadeOut('slow');
 		  			},
 		  		})
 	  		});
@@ -75,7 +75,7 @@
 		<article class="sixteen columns">
 
 			<section id="response">
-				<p>All custom data has been reset. Figures are now as they were in the original CSV file.</p>
+				
 			</section>
 
 			<section class="twelve columns alpha">

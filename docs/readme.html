@@ -18,8 +18,13 @@
 	<link rel="stylesheet" href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/media/css/skeleton.css">
 	<link rel="stylesheet" href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/media/css/layout.css">
 	<style type="text/css">
-		#response { display: none; }
-		#response p { border: solid 5px #00b224; border-radius: 3px; -webkit-border-radius: 3px; padding: 5px; }
+		#response { display: none; border: solid 5px; border-radius: 3px; -webkit-border-radius: 3px; padding: 5px; }
+		#response.error { border-color: #ff0200; }
+		#response.warning { border-color: #ff9900; }
+		#response.success { border-color: #00b224; }
+		span.error { font-weight: bold; color: #ff0200; }
+		span.warning { font-weight: bold; color: #ff9900; }
+		span.success { font-weight: bold; color: #00b224; }
 	</style>
 
 	<!--[if lt IE 9]>

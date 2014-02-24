@@ -31,4 +31,8 @@ foreach (new RecursiveIteratorIterator($iterator) as $filename => $file)
 	<?php foreach($failed_files as $file): ?>
 	<p><span class="warning">Failed to delete:</span> <?php echo $file; ?></p>
 	<?php endforeach; ?>
+
+	<?php if(empty($deleted_files) && empty($failed_files)): ?>
+	<p>There was no custom data to delete. Figures remain unchanged as they were in the CSV file.</p>
+	<?php endif; ?>
 </section>

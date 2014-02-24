@@ -57,10 +57,9 @@
 		  			url: '/~b2-argo/atwd/crimes/reset',
 		  			success: function(data, textStatus, jqXHR) {
 		  				$('#response').replaceWith(data);
+		  				$('#response').show().delay(5000).fadeOut('slow');
 		  			},
 		  		});
-
-		  		$('#response').show().delay(5000).fadeOut('slow');
 	  		});
 	  	});
 	  	

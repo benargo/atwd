@@ -1,5 +1,5 @@
 <?php
-require_once('autoload.php');
+require_once(__DIR__ .'autoload.php');
 
 // Iterate through the custom data folders
 $iterator = new RecursiveDirectoryIterator(BASEDIR.'data/custom');
@@ -7,6 +7,6 @@ foreach (new RecursiveIteratorIterator($iterator) as $filename => $file)
 {
 	if(substr($file->getFileName(), -4) == '.xml')
 	{
-		unlink($file->getPathName());
+		echo (unlink($file->getPathName()) ? 'Deleted '. $file->getPathName() : 'Unable to delete '. $file->getPathName() );
 	}
 }

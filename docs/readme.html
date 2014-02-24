@@ -19,6 +19,7 @@
 	<link rel="stylesheet" href="http://www.cems.uwe.ac.uk/~b2-argo/atwd/media/css/layout.css">
 	<style type="text/css">
 		#response { display: none; border: solid 5px; border-radius: 3px; -webkit-border-radius: 3px; padding: 5px; }
+		#response p { margin-bottom: 0; }
 		#response.error { border-color: #ff0200; }
 		#response.warning { border-color: #ff9900; }
 		#response.success { border-color: #00b224; }
@@ -49,15 +50,17 @@
 
 	  	// Reset Script
 	  	$(function(){
-			  	$('#reset').click(function(event){
+			  	$('#reset').click(function(event) {
 		  		event.preventDefault();
 
 		  		$.ajax({
 		  			url: '/~b2-argo/atwd/crimes/reset',
 		  			success: function(data, textStatus, jqXHR) {
-		  				$('#response').replaceWith(data).show().delay(5000).fadeOut('slow');
+		  				$('#response').replaceWith(data);
 		  			},
-		  		})
+		  		});
+
+		  		$('#response').show().delay(5000).fadeOut('slow');
 	  		});
 	  	});
 	  	

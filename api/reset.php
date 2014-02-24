@@ -15,11 +15,12 @@ foreach (new RecursiveIteratorIterator($iterator) as $filename => $file)
 	{
 		if(unlink($file->getPathName()))
 		{
-			$deleted_files[] = preg_replace('.*data/custom/', '', $file->getPathName());
+			$deleted_files[] = preg_replace('/.*data\/custom\//', '', $file->getPathName());
 		}
 		else
 		{
-			$failed_files[] = preg_replace('.*data/custom/', '', $file->getPathName());
+			$failed_files[] = preg_replace('/.*data\/custom\//', '', $file->getPathName());
+			$success = false;
 		}
 	}
 }

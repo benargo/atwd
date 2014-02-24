@@ -7,6 +7,6 @@ foreach (new RecursiveIteratorIterator($iterator) as $filename => $file)
 {
 	if(substr($file->getFileName(), -4) == '.xml')
 	{
-		echo (unlink($file->getPathName()) ? 'Deleted '. $file->getPathName() : 'Unable to delete '. $file->getPathName() );
+		echo (unlink($file->getPathName()) ? 'Deleted '. $file->getPathName() ."\n" : 'Unable to delete '. $file->getPathName() ."\n");
 	}
 }

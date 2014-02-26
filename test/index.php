@@ -309,7 +309,6 @@
 
 			<p>This script tests a users API for the Advanced Topics in Web Development module to ensure everything works correctly.</p>
 
-
 			<form id="test-form" action="./" method="get">
 				<p><label for="username">To start, fill in your username below:</label></p>
 				<p><input type="text" name="username" placeholder="e.g. b2-argo" <?php if(isset($_GET['username'])) echo 'value="'. $_GET['username'] .'"'; ?> /> <input type="submit" value="Go" /></p>

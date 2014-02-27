@@ -1,6 +1,9 @@
 <?php
 require_once('autoload.php');
 
+// Google Analytics
+$ga = new GoogleAnalytics;
+
 // Switch through the years
 switch(uwe\atwd\uri::get('year'))
 {
@@ -10,6 +13,9 @@ switch(uwe\atwd\uri::get('year'))
 	default:
 		$error = new uwe\atwd\error(404, 'User requested  figures that this API doesn\'t have.', __LINE__);
 		echo $error->response();
+
+		// Google Analytics
+		$ga->event('error', '404');
 		exit;
 		break;
 }
@@ -82,10 +88,17 @@ if($region)
 			}
 
 			echo json_encode($json);
+			break;
 	}
+
+	// Google Analytics
+	$ga->event('get', $region->name);
 }
 else
 {
 	$error = new uwe\atwd\error(404, 'User requested figures for the region "'. uwe\atwd\uri::get('region') .'." Unfortunately that region doesn\'t exist', 16);
 	echo $error->response();
+
+	// Google Analytics
+	$ga->event('error', '404');
 }

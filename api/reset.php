@@ -24,6 +24,10 @@ foreach (new RecursiveIteratorIterator($iterator) as $filename => $file)
 	}
 }
 
+// Google Analytics
+$ga = new GoogleAnalytics;
+$ga->event('reset', 'success');
+
 ?><section id="response" class="<?php echo ($success === true ? 'success' : 'warning'); ?>">
 	<?php foreach($deleted_files as $file): ?>
 	<p><span class="success">Deleted:</span> <?php echo $file; ?></p>

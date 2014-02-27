@@ -1,6 +1,9 @@
 <?php
 require_once('autoload.php');
 
+// Google Analytics
+$ga = new GoogleAnalytics;
+
 // Switch through the years
 switch(uwe\atwd\uri::get('year'))
 {
@@ -10,6 +13,9 @@ switch(uwe\atwd\uri::get('year'))
 	default:
 		$error = new uwe\atwd\error(404, 'User requested  figures that this API doesn\'t have.', __LINE__);
 		echo $error->response();
+
+		// Google Analytics
+		$ga->event('error', '404');
 		exit;
 		break;
 }
@@ -23,7 +29,6 @@ switch(uwe\atwd\uri::get('response'))
 {
 	// Build the XML response object
 	case 'xml':
-	default:
 		header('Content-type: text/xml');
 		$dom = new DOMDocument;
 		$dom->formatOutput = true;
@@ -109,3 +114,5 @@ switch(uwe\atwd\uri::get('response'))
 		break;
 }
 
+// Google Analytics
+$ga->event('get', 'All');

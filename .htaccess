@@ -56,7 +56,8 @@ BrowserMatch bMSIE !no-gzip !gzip-only-text/html
 	RewriteRule ^crimes/doc(/)?(index.html)?$ docs/readme.html [L]
 
 	# 5. Test Script
-	RewriteRule ^test/([a-z0-9\-]+)$ test/index.php?username=$1 [L]
+	RewriteRule ^test/([a-z0-9\-]+)$ test/run.php?username=$1 [L]
+	RewriteRule ^test\/?\?username=([a-z0-9\-]+)$ test/run.php?username=$1 [L]
 
 	# 5. Catch all
 	RewriteCond %{REQUEST_FILENAME} !-d

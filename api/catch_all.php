@@ -9,3 +9,7 @@ require_once('autoload.php');
 
 $error = new uwe\atwd\error(501, 'User made a badly formed request. Request Method: "'. $_CEMS_SERVER['REQUEST_METHOD'] .'"; Request URL: "'. $_CEMS_SERVER['REQUEST_URI']);
 echo $error->response();
+
+// Google Analytics
+$ga = new GoogleAnalytics;
+$ga->event('error', '501');

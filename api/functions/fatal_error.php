@@ -36,6 +36,10 @@ if(!function_exists('fatal_handle'))
 			}
 
 			echo $error->response();
+
+			// Google Analytics
+			$ga = new GoogleAnalytics;
+			$ga->event('error', 'code', 500);
 		}
 	}
 

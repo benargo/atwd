@@ -1,6 +1,9 @@
 <?php
 require_once('autoload.php');
 
+// Google Analytics
+$ga = new GoogleAnalytics;
+
 // Switch through the years
 switch(uwe\atwd\uri::get('year'))
 {
@@ -8,8 +11,11 @@ switch(uwe\atwd\uri::get('year'))
 		break;
 
 	default:
-		$error = new uwe\atwd\error(501, 'User trying to update figures that this API doesn\'t support.');
+		$error = new uwe\atwd\error(404, 'User trying to update figures that this API doesn\'t support.');
 		echo $error->response();
+
+		// Google Analytics
+		$ga->event('error', '404');
 		exit;
 		break;
 }
@@ -37,7 +43,6 @@ if($region)
 	switch(uwe\atwd\uri::get('response'))
 	{
 		case 'xml':
-		default:
 			header('Content-type: text/xml');
 			$dom = new DOMDocument;
 			$dom->formatOutput = true;
@@ -69,9 +74,15 @@ if($region)
 
 			echo json_encode($json);
 	}
+
+	// Google Analytics
+	$ga->event('put', $region->name);
 }
 else
 {
 	$error = new uwe\atwd\error(404, 'User requested to update figures for the region "'. uwe\atwd\uri::get('region') .'." Unfortunately that region doesn\'t exist', 16);
 	echo $error->response();
+
+	// Google Analytics
+	$ga->event('error', '404';
 }

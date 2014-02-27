@@ -72,5 +72,4 @@ class uri
 	{
 		self::$params[$name] = $value;
 	}
-
 }

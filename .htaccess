@@ -61,5 +61,5 @@ BrowserMatch bMSIE !no-gzip !gzip-only-text/html
 	# 5. Catch all
 	RewriteCond %{REQUEST_FILENAME} !-d
 	RewriteCond %{REQUEST_FILENAME} !-f
-	RewriteRule ^crimes/.*/.* api/catch_all.php [L,QSA]
+	RewriteRule ^crimes/.* api/catch_all.php [L,QSA]
 </IfModule>

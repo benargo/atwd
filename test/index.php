@@ -283,7 +283,7 @@
 	
 		var _gaq = _gaq || [];
 		_gaq.push(['_setAccount', 'UA-23790873-4']);
-		_gaq.push(['_setDomainName', 'cems.uwe.ac.uk']);
+		_gaq.push(['_setDomainName', 'www.cems.uwe.ac.uk']);
 		_gaq.push(['_trackPageview']);
 
 	 	(function() {

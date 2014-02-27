@@ -1,24 +1,23 @@
 <?php
 
-/***************************************************
-* Autoloader file for the RESTful Service.
-*
-* It includes a number of items, such as constants,
-* helpful functions, and the classes for 
-* object-oriented interaction.
-*
-* @author 10008548
-* @copyright 2013 University of the West of England
-* @version 1.0
-*
-* Table of Contents
-* -----------------
-* 1. Setup
-* 2. Helpful Functions
-* 3. Classes
-* 4. Enable requests from off campus
-* 5. Caching
-***************************************************/
+/**
+ * Autoloader file for the RESTful Service.
+ *
+ * It includes a number of items, such as constants,
+ * helpful functions, and the classes for 
+ * object-oriented interaction.
+ *
+ * @author 10008548
+ * @copyright 2013 University of the West of England
+ * @version 1.0
+ *
+ * Table of Contents
+ * -----------------
+ * 1. Setup
+ * 2. Helpful Functions
+ * 3. Classes
+ * 4. Enable requests from off campus
+ */
 
 // 1. the API first of all
 require_once('../../../global/cems_config.php');

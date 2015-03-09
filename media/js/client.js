@@ -29,7 +29,7 @@ $(function(){
 				$.ajax({
 					type: 'GET',
 					async: false,
-					url: 'http://www.cems.uwe.ac.uk/~b2-argo/atwd/crimes/'+ time_period + '/'+ region_name + '/json',
+					url: '/crimes/'+ time_period + '/'+ region_name + '/json',
 					crossDomain: true, // with help from http://enable-cors.org/server_php.html
 					ifModified: true,
 				}).done(function(returned_data, textStatus, jqXHR) {

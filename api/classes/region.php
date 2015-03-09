@@ -286,24 +286,24 @@ class region
 		{
 			$dom = new \DOMDocument;
 			$dom->formatOutput = true;
-			$node = $dom->createElementNS('http://www.cems.uwe.ac.uk/~b2-argo/atwd/', 'custom_data');
+			$node = $dom->createElementNS('/', 'custom_data');
 			$node->setAttribute('timestamp', time());
 			$dom_custom_data = $dom->appendChild($node);
 
-			$node = $dom->createElementNS('http://www.cems.uwe.ac.uk/~b2-argo/atwd/', 'region');
+			$node = $dom->createElementNS('/', 'region');
 			$node->setAttribute('id', $this->id);
 			$dom_region = $dom_custom_data->appendChild($node);
 
-			$node = $dom->createElementNS('http://www.cems.uwe.ac.uk/~b2-argo/atwd/', 'name', $this->name);
+			$node = $dom->createElementNS('/', 'name', $this->name);
 			$dom_region->appendChild($node);
 
-			$node = $dom->createElementNS('http://www.cems.uwe.ac.uk/~b2-argo/atwd/', 'total_recorded_crime');
+			$node = $dom->createElementNS('/', 'total_recorded_crime');
 			$dom_total = $dom_region->appendChild($node);
 
-			$node = $dom->createElementNS('http://www.cems.uwe.ac.uk/~b2-argo/atwd/', 'including_fraud', $this->getTotalCrime(true));
+			$node = $dom->createElementNS('/', 'including_fraud', $this->getTotalCrime(true));
 			$dom_total->appendChild($node);
 
-			$node = $dom->createElementNS('http://www.cems.uwe.ac.uk/~b2-argo/atwd/', 'excluding_fraud', $this->getTotalCrime(false));
+			$node = $dom->createElementNS('/', 'excluding_fraud', $this->getTotalCrime(false));
 			$dom_total->appendChild($node);
 
 			$xml = simplexml_import_dom($dom);

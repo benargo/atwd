@@ -6,7 +6,7 @@ php_flag display_errors 1
 php_value error_log logs/error.log
 
 <FilesMatch "\/crimes\/">
-	ErrorDocument 404 /~b2-argo/atwd/api/catch_all.php
+	ErrorDocument 404 /api/catch_all.php
 </FilesMatch>
 
 # Compression
@@ -17,7 +17,7 @@ BrowserMatch bMSIE !no-gzip !gzip-only-text/html
 
 <IfModule mod_rewrite.c>
 	RewriteEngine On
-	RewriteBase /~b2-argo/atwd/
+	RewriteBase /
 
 	RewriteRule ^$ crimes/doc/index.html [R]
 

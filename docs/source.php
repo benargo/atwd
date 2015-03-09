@@ -1,7 +1,7 @@
 <?php
 if($_GET['file'])
 {
-	highlight_file($_SERVER['DOCUMENT_ROOT'] . $_GET['file']);
+	highlight_file('../' . $_GET['file']);
 	exit;
 }
 else

@@ -67,7 +67,7 @@ All code is hosted at [Github](https://github.com/benargo/atwd) with backups on 
 	4. [skeleton.css](https://github.com/benargo/atwd/blob/master/media/css/skeleton.css) ([Backup](/media/css/skeleton.css))
 2. JavaScript
 	1. [Data Upload](https://github.com/benargo/atwd/blob/master/media/js/data-upload.js) ([Backup](/media/js/data-upload.js))
-	2. [Chart.js Library](https://github.com/benargo/atwd/blob/master/media/js/chart.js) ([Backup](www.cems.uwe.ac.uk/~b2-argo/atwd/media/js/chart.js))
+	2. [Chart.js Library](https://github.com/benargo/atwd/blob/master/media/js/chart.js) ([Backup](www.cems.uwe.ac.uk/media/js/chart.js))
 	3. [Client Processing](https://github.com/benargo/atwd/blob/master/media/js/client.js) ([Backup](/media/js/client.js))
 3. Images
 	1. [Home Office logo](/media/images/home_office.75px.png) (&copy; 2013 Crown Copyright)

@@ -157,7 +157,7 @@
 					$.ajax(
 					{
 						async: false,
-						url: '/~b2-argo/atwd/test/ajax_test.php?url='+ base + test_url,
+						url: '/test/ajax_test.php?url='+ base + test_url,
 						method: 'get',
 						statusCode:
 						{
@@ -264,7 +264,7 @@
 					data: {
 						username: username
 					},
-					url: '/~b2-argo/atwd/test/ajax_log.php'
+					url: '/test/ajax_log.php'
 				});
 
 				$('#response').append('<p style="text-align: center; border: none;"><a href="#top">Scroll to Top</a></p>');

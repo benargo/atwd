@@ -1,8 +1,7 @@
 <?php
-require_once('../../global/cems_config.php');
 if($_GET['file'])
 {
-	highlight_file($_CEMS_SERVER["DOCUMENT_ROOT"] .'public_html/'. $_GET['file']);
+	highlight_file($_SERVER['DOCUMENT_ROOT'] . $_GET['file']);
 	exit;
 }
 else
